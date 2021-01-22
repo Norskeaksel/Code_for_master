@@ -7,8 +7,8 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="SocietalCommitment"
-scenarios=c("SocietalCommitment")
+#scenario="SocietalCommitment"
+scenarios=c("GradualDevelopment")
 TU=T
 
 toThermal=function(df){
