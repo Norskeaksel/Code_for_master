@@ -7,8 +7,9 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-#scenario="SocietalCommitment"
+scenario="SocietalCommitment" #Only for testing/debugging purposes
 scenarios=c("GradualDevelopment")
+technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=T
 
 toThermal=function(df){
@@ -17,6 +18,21 @@ toThermal=function(df){
     #print(row)
     if(df[row,col]!="PV"&&df[row,col]!="Hydro"&&df[row,col]!="Wind Offshore Deep"&&df[row,col]!="Wind Onshore"&&df[row,col]!="Wind Offshore Transitional"&&df[row,col]!="Wind Onshore"&&df[row,col]!="Wind"){
       df[row,col] = "Thermal"
+    }
+  }
+  allTechnologies=df["Technology"]
+  return (df)
+}
+
+getMissingTechnologies=function(df){
+  for(tech in technologies){
+    if(!any(df["Technology"] == tech)){
+      missingRow=df[1,]
+      missingRow["Technology"] = tech
+      for(i in seq(2015,2050,5)){
+        missingRow[toString(i)] = 0
+      }
+      df[nrow(df) + 1,] = missingRow
     }
   }
   return (df)
@@ -31,6 +47,7 @@ renameTechnologies=function(df){
   df$Technology = sub(".*Transitional.*","Wind Offshore Transitional",df$Technology)
 
   df = toThermal(df)
+  df = getMissingTechnologies(df)
   return (df)
 }
 
@@ -50,20 +67,15 @@ totals=function(df,PJ2Twh=FALSE){
   return (df)
 }
 
-year2Col=function(df){
-  rownames(df)=Category
-df=as.data.frame(t(df))
-df$year=rownames(df)
-df = melt(df, id.vars=c("year"))
-return (df)
-}
 mergeScenariosDf= function(scenarios,TU=F){
   scenarioCapacitiesSub= list()
   scenarioProductionsSub = list()
   #scenarioCostsSub = list()
   #scenarioEmissionsSub = list()
   if(TU==T){
-    scenarios=c("TU\\GradualDevelopment")#"TU\\TechnoFriendly", , "TU\\DirectedTransition","TU\\SocietalCommitment")
+    for(i in 1:length(scenarios)){
+      scenarios[i]=paste("TU\\",scenarios[i],sep="")
+    }
   }
   c=0
   for(scenario in scenarios){
@@ -162,8 +174,8 @@ totalPowerProductions = totals(mergedPowerProductions[,-c(1,2,4:8)],TRUE)
 # totalPowerEmissions = totals(mergedPowerEmissions[,-c(1:3,5)])
 # totalPowerCosts =totals(mergedPowerCosts[,-c(1,2,4)])
 
-# View(totalPowerCapacities)
-# View(totalPowerProductions)
+View(totalPowerCapacities)
+View(totalPowerProductions)
 # View(totalPowerEmissions)
 # View(totalPowerCosts)
 
