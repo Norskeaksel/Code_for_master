@@ -50,5 +50,5 @@ def reproduction(dfs, title, ascending=True):
 
     figure = plt.gcf()  # get current figure
     figure.set_size_inches(14, 8)  # set figure's size manually to your full screen (32x18)
-    plt.savefig(title)#, bbox_inches='tight')  # bbox_inches removes extra white spaces
+    plt.savefig("plots\\"+title)#, bbox_inches='tight')  # bbox_inches removes extra white spaces
     plt.show()
