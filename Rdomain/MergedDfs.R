@@ -7,28 +7,33 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="SocietalCommitment" #Only for testing/debugging purposes
-scenarios=c("GradualDevelopment")
+scenario="GradualDevelopment" #Only needed for testing/debugging purposes
+scenarios=c("GradualDevelopment")# ,"DirectedTransition")# , SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
-TU=T
+TU=F
 
 toThermal=function(df){
   col="Technology"
   for (row in 1:nrow(df)){
-    #print(row)
-    if(df[row,col]!="PV"&&df[row,col]!="Hydro"&&df[row,col]!="Wind Offshore Deep"&&df[row,col]!="Wind Onshore"&&df[row,col]!="Wind Offshore Transitional"&&df[row,col]!="Wind Onshore"&&df[row,col]!="Wind"){
+    makeThermal=TRUE
+    for(tech in technologies){
+      if(df[row,col]==tech){
+        makeThermal=FALSE
+        break
+      }
+    }
+    if(makeThermal){
       df[row,col] = "Thermal"
     }
   }
-  allTechnologies=df["Technology"]
   return (df)
 }
 
 getMissingTechnologies=function(df){
   for(tech in technologies){
-    if(!any(df["Technology"] == tech)){
+    if(!any(df$Technology == tech)){
       missingRow=df[1,]
-      missingRow["Technology"] = tech
+      missingRow$Technology = tech
       for(i in seq(2015,2050,5)){
         missingRow[toString(i)] = 0
       }
@@ -39,13 +44,12 @@ getMissingTechnologies=function(df){
 }
 
 renameTechnologies=function(df){
-  df$Technology = sub(".*PV.*","PV",df$Technology)
-  df$Technology = sub(".*Hydro.*","Hydro",df$Technology)
-  #df$Technology = sub(".*Wind.*","Wind",df$Technology)
-  df$Technology = sub(".*Wind_Onshore.*","Wind Onshore",df$Technology)
-  df$Technology = sub(".*Deep.*","Wind Offshore Deep",df$Technology)
-  df$Technology = sub(".*Transitional.*","Wind Offshore Transitional",df$Technology)
-
+  for(tech in technologies){
+    lastName=tail(strsplit(tech, " ")[[1]],1)
+    regex=paste(".*",lastName,".*",sep="")
+    #print(regex)
+    df$Technology = sub(regex, tech, df$Technology)
+  }
   df = toThermal(df)
   df = getMissingTechnologies(df)
   return (df)
@@ -174,8 +178,8 @@ totalPowerProductions = totals(mergedPowerProductions[,-c(1,2,4:8)],TRUE)
 # totalPowerEmissions = totals(mergedPowerEmissions[,-c(1:3,5)])
 # totalPowerCosts =totals(mergedPowerCosts[,-c(1,2,4)])
 
-View(totalPowerCapacities)
-View(totalPowerProductions)
+# View(totalPowerCapacities)
+# View(totalPowerProductions)
 # View(totalPowerEmissions)
 # View(totalPowerCosts)
 
