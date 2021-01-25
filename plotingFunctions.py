@@ -21,7 +21,7 @@ color = {"p": "#7e1e9c",
 
 # %%
 
-def reproduction(dfs, title, ascending=True):
+def plotDfs(dfs, title, ascending=True):
     years = list(map(str, range(2015, 2051, 5)))
     x = np.arange(len(years))
     # labels = ['TF DF

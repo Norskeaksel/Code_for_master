@@ -7,8 +7,8 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="GradualDevelopment" #Only needed for testing/debugging purposes
-scenarios=c("GradualDevelopment")# ,"DirectedTransition")# , SocietalCommitment 
+scenario="SocietalCommitment" #Only needed for testing/debugging purposes
+scenarios=c("DirectedTransition")# ,"DirectedTransition")# , SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=F
 
