@@ -62,7 +62,7 @@ plotDfs([SCP,TFP,DTP,GDP], "Power Productions [TWh] All scenarios [SC,TF,DT,GD]"
 plotDfs([GDC, TU_GDC], "GradualDevelopment Power Capacities [GW] GG vs RR", False)
 plotDfs([GDP, TU_GDP], "GradualDevelopment Power Productions [TWh] GG vs RR", False)
 plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
-plotDfs([SCC, TU_SCC], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
+plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
 
 # GG_New vs GG_Old
 plotDfs([GDC, GDC_Old], "GradualDevelopment Power Capacities [GW] New vs Old", False)
