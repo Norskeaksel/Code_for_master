@@ -3,11 +3,10 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.matplotlib.use('Qt5Agg')
-#plt.matplotlib.use('QT')
+#plt.matplotlib.use('Qt5Agg') #Show plot in separate window
 
 # %%
-color = {"p": "#7e1e9c",
+colorMap = {"p": "#7e1e9c",
          "g": "#15b01a",
          "b": "#0343df",
          "r": "#e50000",
@@ -16,7 +15,14 @@ color = {"p": "#7e1e9c",
          "c": "#00ffff",
          "o": "#f97306"}
 
-
+techColor = {
+    "Hydro": "b",
+    "Thermal": "r",
+    "Wind Onshore": "g",
+    "PV": "o",
+    "Wind Offshore Transitional": "c",
+    "Wind Offshore Deep": "p",
+}
 
 
 # %%
@@ -25,10 +31,10 @@ def plotDfs(dfs, title, ascending=True):
     years = list(map(str, range(2015, 2051, 5)))
     x = np.arange(len(years))
     # labels = ['TF DF
-    width = 1.25
+    width = 1.55-0.15*len(dfs)
     opacity = 1
     fig, ax = plt.subplots()
-    color_str = "orgcbp" if ascending else "brgcop"
+    color_str = "pocgrb" if ascending else "brgcop"
     plt.grid(axis="y", zorder=0)
     for i in range(len(dfs)):
         df=dfs[i]
@@ -36,9 +42,15 @@ def plotDfs(dfs, title, ascending=True):
         df = df.sort_values(by='2015', ascending=ascending)
         base = 0
         for trueIdx, (idx, row) in enumerate(df.iterrows()):
-            ax.bar(np.array(list(map(int,years)))+(i-(len(dfs)-1)/2)*width*1.1, row[years], width, label=row['Technology'], bottom=base, alpha=opacity, zorder=3,
-                   color=color[color_str[trueIdx]] if trueIdx < len(color_str) else tuple(
-                       random.choice(range(32, 256, 32)) / 255 for _ in range(4)))
+            color=""
+            tech=row['Technology']
+            try:
+                color=colorMap[techColor[tech]]
+            except:
+                color=tuple(random.choice(range(32, 256, 32)) / 255 for _ in range(4))
+
+            ax.bar(np.array(list(map(int,years)))+(i-(len(dfs)-1)/2)*width*1.1, row[years], width, label=tech,
+                   bottom=base, alpha=opacity, zorder=3, color=color)
             # print(row['Technology'])
             base += row[years]
 
