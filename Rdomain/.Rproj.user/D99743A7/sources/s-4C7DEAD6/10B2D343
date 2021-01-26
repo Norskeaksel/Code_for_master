@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611671880842.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "10B2D343",
+    "lastKnownWriteTime" : 2319406783029846064,
+    "last_content_update" : 1611671880842,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "FA1CA3FB",
+        "caption" : "totalPowerCapacities",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=totalPowerCapacities&cache_key=FA1CA3FB",
+        "displayedObservations" : 7,
+        "environment" : "",
+        "expression" : "totalPowerCapacities",
+        "object" : "totalPowerCapacities",
+        "preview" : 0,
+        "totalObservations" : 7,
+        "variables" : 10
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

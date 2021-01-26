@@ -10,7 +10,7 @@ rm(list=ls())
 scenario="SocietalCommitment" #Only needed for testing/debugging purposes
 scenarios=c("DirectedTransition")# ,"DirectedTransition")# , SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
-TU=F
+TU=T
 
 toThermal=function(df){
   col="Technology"
@@ -191,8 +191,8 @@ write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FA
 #write.csv(totalPowerEmissions,"Tables\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
 #write.csv(totalPowerCosts,"Tables\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
 }else{
-  write.csv(totalPowerCapacities,"Tables\\VS_TUtotalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
-  write.csv(totalPowerProductions,"Tables\\VS_TUtotalPowerProductions.csv",row.names=FALSE, quote = FALSE)
+  write.csv(totalPowerCapacities,"Tables\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
+  write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
   #write.csv(totalPowerEmissions,"Tables\\VS_TUtotalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
   #write.csv(totalPowerCosts,"Tables\\VS_TUtotalPowerCosts.csv",row.names=FALSE, quote = FALSE)
 }

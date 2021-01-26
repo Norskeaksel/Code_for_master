@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611269653033.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3025180117",
+    "id" : "17D85AF4",
+    "lastKnownWriteTime" : 1611671342,
+    "last_content_update" : 1611671342,
+    "path" : "C:/Users/ahsor/Dropbox/Masteroppgave/PlotData/Rdomain/MergedDfs.R",
+    "project_path" : "MergedDfs.R",
+    "properties" : {
+        "cursorPosition" : "21,13",
+        "scrollLine" : "6"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

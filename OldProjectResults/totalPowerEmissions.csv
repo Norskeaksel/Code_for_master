@@ -1,0 +1,5 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+TechnoFriendly,Thermal,0.76,0.62,0.00,0.00,0.00,0.00,0.00, 0.00
+SocietalCommitment,Thermal,0.76,0.62,0.00,0.00,0.00,0.00,0.00, 0.00
+GradualDevelopment,Thermal,0.76,0.62,0.00,0.00,0.00,0.00,0.00, 0.00
+DirectedTransition,Thermal,0.76,0.62,0.20,0.19,0.19,0.00,0.00,-3.58

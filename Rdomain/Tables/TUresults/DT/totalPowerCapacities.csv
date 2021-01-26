@@ -1,0 +1,8 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+TU\DirectedTransition,Hydro,31.00,29.70,29.70,29.70,29.70,29.70,29.70,29.70
+TU\DirectedTransition,PV, 0.00, 0.00, 0.00, 0.00, 2.60, 5.85, 5.85, 8.45
+TU\DirectedTransition,Thermal, 1.75, 1.61, 1.46, 1.35, 1.32, 1.17, 1.17, 0.12
+TU\DirectedTransition,Wind Offshore Deep, 0.00, 0.00, 0.00, 0.00, 0.00, 0.87, 0.87, 0.87
+TU\DirectedTransition,Wind Offshore Transitional, 0.00, 0.00, 0.00, 0.00, 7.54, 7.54, 7.54, 7.54
+TU\DirectedTransition,Wind Onshore, 1.20, 8.01,14.97,14.96,14.81,14.68,14.68,13.77
+TU\DirectedTransition,Sum,33.95,39.32,46.14,46.01,55.97,59.81,59.81,60.45

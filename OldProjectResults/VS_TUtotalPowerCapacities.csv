@@ -1,0 +1,26 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+TU\TechnoFriendly,Hydro,31.00,31.00,31.00,31.00,31.00,31.00,31.00,31.000
+TU\TechnoFriendly,PV, 0.00, 0.00, 0.00, 0.00, 0.00, 1.76, 4.36, 5.200
+TU\TechnoFriendly,Thermal, 1.75, 1.61, 1.46, 1.34, 1.28, 1.14, 1.13, 0.083
+TU\TechnoFriendly,Wind Offshore Deep, 0.00, 0.00, 0.00, 0.00, 2.34, 2.34, 2.34, 2.344
+TU\TechnoFriendly,Wind Offshore Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.897
+TU\TechnoFriendly,Wind Onshore, 1.20, 1.20, 8.16,14.96,14.81,14.68,14.68,12.587
+TU\TechnoFriendly,Sum,33.95,33.81,40.62,47.30,49.44,50.93,53.52,52.110
+TU\SocietalCommitment,Hydro,31.00,31.00,31.00,34.85,34.85,34.85,34.85,34.848
+TU\SocietalCommitment,PV, 0.00, 0.00, 0.00, 0.00, 7.37, 9.60, 9.63,15.327
+TU\SocietalCommitment,Thermal, 1.75, 1.61, 1.46, 1.34, 1.28, 1.14, 1.13, 0.083
+TU\SocietalCommitment,Wind Onshore, 1.20, 8.17,15.14,17.73,24.54,23.91,23.91,21.818
+TU\SocietalCommitment,Sum,33.95,40.78,47.60,53.92,68.04,69.49,69.52,72.076
+TU\GradualDevelopment,Hydro,31.00,31.00,31.00,33.67,33.67,33.67,33.67,33.667
+TU\GradualDevelopment,PV, 0.00, 0.00, 0.00, 0.00, 2.60, 7.80, 8.79,10.101
+TU\GradualDevelopment,Thermal, 1.75, 1.61, 1.46, 1.34, 1.31, 1.28, 1.13, 1.134
+TU\GradualDevelopment,Wind Offshore Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 5.69, 5.69, 5.691
+TU\GradualDevelopment,Wind Onshore, 1.20, 1.20, 8.16,18.00,21.49,21.40,20.78,20.379
+TU\GradualDevelopment,Sum,33.95,33.81,40.62,53.01,59.07,69.85,70.06,70.973
+TU\DirectedTransition,Hydro,31.00,31.00,31.00,31.00,31.00,31.00,31.00,31.000
+TU\DirectedTransition,PV, 0.00, 0.00, 0.00, 0.00, 0.00, 2.60, 5.20, 5.200
+TU\DirectedTransition,Thermal, 1.75, 1.61, 2.31, 2.19, 2.13, 1.99, 1.98, 2.699
+TU\DirectedTransition,Wind Offshore Deep, 0.00, 0.00, 0.00, 0.00, 0.76, 0.76, 3.02, 3.024
+TU\DirectedTransition,Wind Offshore Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 0.25, 0.25, 0.248
+TU\DirectedTransition,Wind Onshore, 1.20, 1.20, 8.16,14.96,14.81,14.68,14.68,12.587
+TU\DirectedTransition,Sum,33.95,33.81,41.47,48.15,48.70,51.27,56.13,54.758
