@@ -54,7 +54,7 @@ GDP_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerProductions.csv")
 
 
 #All GG
-plotDfs([SCC,TFC,DTC,GDC], "Power Capacities [GW] All scenarios [SC,TF,DT,GD]", False)
+"""plotDfs([SCC,TFC,DTC,GDC], "Power Capacities [GW] All scenarios [SC,TF,DT,GD]", False)
 plotDfs([SCP,TFP,DTP,GDP], "Power Productions [TWh] All scenarios [SC,TF,DT,GD]", False)
 
 
@@ -68,7 +68,7 @@ plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", Fa
 plotDfs([GDC, GDC_Old], "GradualDevelopment Power Capacities [GW] New vs Old", False)
 plotDfs([GDP, GDP_Old], "GradualDevelopment Power Productions [TWh] New vs Old", False)
 plotDfs([TFC, TFC_Old], "TechnoFriendly Power Capacities [GW] New vs Old", False)
-plotDfs([TFP, TFP_Old], "TechnoFriendly Power Productions [GW] New vs Old", False)
+plotDfs([TFP, TFP_Old], "TechnoFriendly Power Productions [GW] New vs Old", False)"""
 
 #Comparing solvers
 plotDfs([DTC, TU_DTC, TU_CPLEX_DTC], "DirectedTransition Power Capacities [GW] GG vs RR_Gurobi vs RR_CPLEX", False)

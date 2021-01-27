@@ -7,11 +7,10 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="SocietalCommitment" #Only needed for testing/debugging purposes
-scenarios=c("DirectedTransition")# ,"DirectedTransition")# , SocietalCommitment 
+scenario="GradualDevelopment" #Only needed for testing/debugging purposes
+scenarios=c("DirectedTransition")# SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=T
-
 toThermal=function(df){
   col="Technology"
   for (row in 1:nrow(df)){
@@ -191,10 +190,10 @@ write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FA
 #write.csv(totalPowerEmissions,"Tables\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
 #write.csv(totalPowerCosts,"Tables\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
 }else{
-  write.csv(totalPowerCapacities,"Tables\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
-  write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
-  #write.csv(totalPowerEmissions,"Tables\\VS_TUtotalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
-  #write.csv(totalPowerCosts,"Tables\\VS_TUtotalPowerCosts.csv",row.names=FALSE, quote = FALSE)
+  write.csv(totalPowerCapacities,"Tables\\TUresults\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
+  write.csv(totalPowerProductions,"Tables\\TUresults\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
+  #write.csv(totalPowerEmissions,"Tables\\TUresults\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
+  #write.csv(totalPowerCosts,"Tables\\TUresults\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
 }
 
 #df=totalPowerCapacities
