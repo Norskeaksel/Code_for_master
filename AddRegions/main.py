@@ -2,30 +2,14 @@
 # book = open_workbook('Inputdata\\Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx')
 import pandas as pd
 import numpy as np
+import numbers
 
 try:
     open('Output.txt', 'w').close()
 except:
     pass
 
-new_regions = ["NO" + str(i) for i in range(1, 6)]
-n = len(new_regions)
-datafile = 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'
-skip_rows = 4
 
-datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
-skip_rows = 0
-
-print("Reading data")
-try:
-    Sets_sheet = pd.read_excel('Inputdata\\' + datafile, sheet_name='Sets')
-except:
-    pass
-
-cut_sheets = pd.read_excel('Inputdata\\' + datafile, sheet_name=None, skiprows=range(0, skip_rows))
-# sheet_description = pd.read_excel('Inputdata\\' + datafile, sheet_name=None, header=None, nrows=skip_rows)
-
-print("Adding regions")
 def fprint(*args, **kwargs):
     print(*args, **kwargs)
     with open('Output.txt', 'a') as file:
@@ -90,19 +74,19 @@ def addRows(df, listOfPositions):
         delete.append(row_nr)
         row = (df.iloc[row_nr, :])
         rep = new_regions.copy()
-        rep.insert(0, "NO")
+        rep.insert(0, original_region)
         for i in range(n):
             row = row.replace(rep[i], rep[i + 1])
             df = df.append(row)
 
     df = df.reset_index(drop=True)
-    #df = df.drop(df.index[delete])
+    # df = df.drop(df.index[delete])
     return df
 
 
 def addCols(df):
-    series = df["NO"]
-    #del df["NO"]
+    series = df[original_region]
+    # del df["NO"]
     for reg in new_regions:
         df[reg] = series
 
@@ -119,24 +103,78 @@ def addEmptyRows(df, skip_rows):
     return df
 
 
-def toExcel(dfs, names, filename):
-    writer = pd.ExcelWriter('ModifiedInput\\Modified' + filename)
+def fixStupidErrors(df, first_lines, n, skiprows):
+    """for idx, col in enumerate(df.columns):
+        header = df.iloc[0, idx].split('.')
+        if len(header) > 1:
+            df.iloc[0, idx] = header[0]"""
+
+    first_sheet_lines = first_lines[n]
+    someNa = first_sheet_lines.isnull().values.any()
+    onlyNa = first_sheet_lines.isnull().sum().sum() == len(first_sheet_lines.columns)
+    new_skiprows = skiprows
+    if someNa and not onlyNa and n != 'Sets':
+        new_skiprows = skiprows - 1
+        df = first_sheet_lines.append(df)
+
+    return df, new_skiprows
+
+
+def toExcel(dfs, names, filename, first_lines, skip_rows):
+    writer = pd.ExcelWriter('ModifiedInput\\Modified_' + filename)
     for df, n in zip(dfs, names):
-        df = df.dropna(axis=1, how='all')
+        #df = df.dropna(axis=1, how='all')
         df = df.T.reset_index().T
         for idx, col in enumerate(df):
             val = df.iloc[0, idx]
             if type(val) == str and 'Unnamed' in val:
                 df.iloc[0, idx] = ''
 
-        if skip_rows and n != 'Sets':
-            df = addEmptyRows(df, skip_rows)
+        #df, sr = fixStupidErrors(df, first_lines, n, skip_rows)
+        if n != 'Sets':
+            #df = addEmptyRows(df, sr)
+            df = first_lines[n].append(df,ignore_index=True)
 
         df.to_excel(writer, sheet_name=n, header=False, index=False)
 
     writer.save()
 
 
+def deleteNonNO(df, listOfPositions):
+    keep_rows = [i[0] for i in listOfPositions]
+    # keep_cols = [i[1] for i in listOfPositions]
+    # keep_cols += ([i for i in df.columns if isinstance(i, numbers.Number) or'named' in i])
+    # keep_cols = set(keep_cols)
+    # cut_df = df[keep_cols]
+    # if 'NO' in df.columns:
+    # cut_df['NO'] = df['NO']
+
+    cut_df = df.iloc[keep_rows]
+    cut_df = cut_df.reset_index(drop=True)
+    # if 'Trade' in name:
+    # cut_df = pd.DataFrame()
+
+    return cut_df
+
+
+new_regions = ["Mordor" + str(i) for i in range(1, 6)]
+original_region="Mordor"
+n = len(new_regions)
+datafile = 'Data_MiddleEarth_v01.xlsx'
+skip_rows = 4
+
+datafile = 'Hourly_Data_MiddleEarth_v01.xlsx'
+skip_rows = 0
+
+print("Reading data")
+try:
+    Sets_sheet = pd.read_excel('Inputdata\\' + datafile, sheet_name='Sets')
+except:
+    pass
+
+cut_sheets = pd.read_excel('Inputdata\\' + datafile, sheet_name=None, skiprows=range(0, skip_rows))
+first_lines = pd.read_excel('Inputdata\\' + datafile, sheet_name=None, header=None, nrows=skip_rows)
+print("Adding regions")
 dfs = []
 names = []
 for name, sheet in cut_sheets.items():
@@ -144,7 +182,7 @@ for name, sheet in cut_sheets.items():
         # continue
         sheet = Sets_sheet
         regions = list(sheet["Region"])
-        #regions = [i for i in regions if i != "NO"]
+        # regions = [i for i in regions if i != "NO"]
         c = 0
         for idx, reg in enumerate(regions):
             if isNaN(reg):
@@ -156,39 +194,28 @@ for name, sheet in cut_sheets.items():
 
         series = pd.Series(regions)
         sheet["Region"] = series
+        # remove following
+        dfs.append(sheet)
+        names.append(name)
 
     else:
-        listOfPositions = getIndexes(sheet, "NO")
+        listOfPositions = getIndexes(sheet, original_region)
+        """sheet = deleteNonNO(sheet, listOfPositions)
+        datafile = 'Needed_Norwegian_data_without_trade.xlsx'
+        datafile = 'Needed_Norwegian_data_with_trade.xlsx'
+        listOfPositions = getIndexes(sheet, "NO")"""
+        add = False
         if listOfPositions != []:
             # printPositions(listOfPositions)
             sheet = addRows(sheet, listOfPositions)
+            add = True
 
-        if "NO" in sheet.columns:
+        if original_region in sheet.columns:
             sheet = addCols(sheet)
+            add = True
 
-    dfs.append(sheet)
-    names.append(name)
-
-"""for name, sheet in original_sheets.items():
-    if name == "Sets":
-        regions = list(sheet["Region"])
-        regions = [i for i in regions if i != "NO"]
-        c = 0
-        for idx, reg in enumerate(regions):
-            if isNaN(reg):
-                regions[idx] = new_regions[c]
-                c += 1
-
-            if c == len(new_regions):
-                break
-
-        series = pd.Series(regions)
-        sheet["Region"] = series
-
-    if name not in names:
-        #sheet = sheet.dropna(thresh=len(sheet) // nanTresh, axis=1)
         dfs.append(sheet)
-        names.append(name)"""
+        names.append(name)
 
 print("Writing to Excel")
-toExcel(dfs, names, datafile)
+toExcel(dfs, names, datafile, first_lines, skip_rows)
