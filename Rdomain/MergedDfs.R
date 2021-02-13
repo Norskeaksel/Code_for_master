@@ -130,8 +130,8 @@ mergeScenariosDf= function(scenarios,TU=F){
     #                              |Emissions$Category=="Buildings"
     #                              |Emissions$Category=="Transportation")),]
     
-    CapacitiesSub=renameTechnologies(CapacitiesSub)
-    ProductionsSub=renameTechnologies(ProductionsSub)
+    #CapacitiesSub=renameTechnologies(CapacitiesSub)
+    #ProductionsSub=renameTechnologies(ProductionsSub)
     #CostsSub=renameTechnologies(CostsSub)
     #EmissionsSub=renameTechnologies(EmissionsSub)
     # 
