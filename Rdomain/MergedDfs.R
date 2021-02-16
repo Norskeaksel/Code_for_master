@@ -11,6 +11,7 @@ scenario="GradualDevelopment" #Only needed for testing/debugging purposes
 scenarios=c("DirectedTransition")# SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=T
+region="NO"
 toThermal=function(df){
   col="Technology"
   for (row in 1:nrow(df)){
@@ -106,25 +107,25 @@ mergeScenariosDf= function(scenarios,TU=F){
     #Costs[is.na(Costs)] = 0
     #Emissions[is.na(Emissions)] = 0
     
-    CapacitiesSub=Capacities[which(Capacities$Region=="NO" 
+    CapacitiesSub=Capacities[which(Capacities$Region==region 
                                    & Capacities$Type=="TotalCapacity" 
                                    & (Capacities$Category=="Power"
                                    |Capacities$Category=="Industry"
                                    |Capacities$Category=="Buildings"
                                    |Capacities$Category=="Transportation")) ,]
-    ProductionsSub=Productions[which(Productions$Region=="NO" 
+    ProductionsSub=Productions[which(Productions$Region== 
                                      & Productions$Type=="Production"
                                      & (Productions$Category=="Power"
                                      |Productions$Category=="Industry"
                                        |Productions$Category=="Buildings"
                                        |Productions$Category=="Transportation")),]
     
-    # CostsSub=Costs[which(Costs$Region=="NO" 
+    # CostsSub=Costs[which(Costs$Region== 
     #                      & (Costs$Category=="Power"
     #                         |Costs$Category=="Industry"
     #                         |Costs$Category=="Buildings"
     #                         |Costs$Category=="Transportation")),]
-    # EmissionsSub=Emissions[which(Emissions$Region=="NO" 
+    # EmissionsSub=Emissions[which(Emissions$Region== 
     #                              & (Emissions$Category=="Power"
     #                              |Emissions$Category=="Industry"
     #                              |Emissions$Category=="Buildings"
