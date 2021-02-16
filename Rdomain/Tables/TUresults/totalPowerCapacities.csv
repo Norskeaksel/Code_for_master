@@ -1,13 +1,11 @@
 Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
-TU\DirectedTransition,HLI_Biomass_CHP_CCS, 0.00, 0.00, 0.00, 0.0089, 0.039, 0.039, 0.039, 0.039
-TU\DirectedTransition,P_Biomass, 0.55, 0.41, 0.31, 0.2320, 0.174, 0.025, 0.025, 0.025
-TU\DirectedTransition,P_Gas, 1.20, 1.20, 1.15, 1.1107, 1.111, 1.109, 1.102, 0.054
-TU\DirectedTransition,RES_Hydro_Large,24.70,23.40,23.40,23.4000,23.400,23.400,23.400,23.400
-TU\DirectedTransition,RES_Hydro_Small, 6.30, 6.30, 6.30, 6.3000, 6.300, 6.300, 6.300, 6.300
-TU\DirectedTransition,RES_PV_Utility_Avg, 0.00, 0.00, 0.00, 0.0000, 0.000, 0.652, 0.652, 3.252
-TU\DirectedTransition,RES_PV_Utility_Opt, 0.00, 0.00, 0.00, 0.0000, 2.600, 5.200, 5.200, 5.200
-TU\DirectedTransition,RES_Wind_Offshore_Deep, 0.00, 0.00, 0.00, 0.0000, 6.557, 6.557, 6.557, 6.557
-TU\DirectedTransition,RES_Wind_Offshore_Transitional, 0.00, 0.00, 0.00, 0.0000, 0.000, 0.999, 0.999, 0.999
-TU\DirectedTransition,RES_Wind_Onshore_Avg, 1.20, 1.20, 1.18, 1.0051, 0.854, 0.726, 0.726, 0.726
-TU\DirectedTransition,RES_Wind_Onshore_Opt, 0.00, 6.81,13.79,13.9533,13.953,13.953,13.953,13.044
-TU\DirectedTransition,Sum,33.95,39.32,46.14,46.0101,54.988,58.960,58.953,59.595
+TU\GradualDevelopment,P_Biomass, 0.55, 0.41, 0.31, 0.23, 0.17, 0.025, 0.025, 0.025
+TU\GradualDevelopment,P_Gas, 1.20, 1.20, 1.15, 1.11, 1.11, 1.109, 1.102, 0.054
+TU\GradualDevelopment,RES_Hydro_Large,24.70,24.70,24.70,24.70,24.70,24.700,24.700,24.700
+TU\GradualDevelopment,RES_Hydro_Small, 6.30, 6.30, 6.30, 6.30, 6.30, 6.300, 6.300, 6.300
+TU\GradualDevelopment,RES_PV_Utility_Avg, 0.00, 0.00, 0.00, 0.00, 0.00, 2.600, 5.200, 5.200
+TU\GradualDevelopment,RES_PV_Utility_Opt, 0.00, 0.00, 0.00, 0.00, 2.60, 5.200, 5.200, 5.200
+TU\GradualDevelopment,RES_Wind_Offshore_Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 6.094, 6.094, 6.101
+TU\GradualDevelopment,RES_Wind_Onshore_Avg, 1.20, 1.20, 1.18, 6.19,11.11,10.482,10.482,10.482
+TU\GradualDevelopment,RES_Wind_Onshore_Opt, 0.00, 0.00, 6.98,13.95,13.95,13.953,13.953,13.953
+TU\GradualDevelopment,Sum,33.95,33.81,40.62,52.49,59.95,70.463,73.056,72.015

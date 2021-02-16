@@ -8,10 +8,12 @@ library(knitr)
 rm(list=ls())
 
 scenario="GradualDevelopment" #Only needed for testing/debugging purposes
-scenarios=c("DirectedTransition")# SocietalCommitment 
+scenarios=c("GradualDevelopment")# SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=F
+Signy=T #Makes read csv separatpr ";"
 region="NO"
+
 toThermal=function(df){
   col="Technology"
   for (row in 1:nrow(df)){
@@ -76,16 +78,22 @@ mergeScenariosDf= function(scenarios,TU=F){
   scenarioProductionsSub = list()
   #scenarioCostsSub = list()
   #scenarioEmissionsSub = list()
+  sep=","
   if(TU==T){
     for(i in 1:length(scenarios)){
       scenarios[i]=paste("TU\\",scenarios[i],sep="")
+    }
+  }else if(Signy==T){
+    sep=";"
+    for(i in 1:length(scenarios)){
+      scenarios[i]=paste("Signy\\",scenarios[i],sep="")
     }
   }
   c=0
   for(scenario in scenarios){
     c=c+1
-    Capacities=read.csv(paste(scenario,'Capacity.csv',sep=""),check.names = FALSE)
-    Productions=read.csv(paste(scenario,'Production.csv',sep=""),check.names = FALSE)
+    Capacities=read.csv(paste(scenario,'Capacity.csv',sep=""),check.names = FALSE,sep = sep)
+    Productions=read.csv(paste(scenario,'Production.csv',sep=""),check.names = FALSE, sep = sep)
     #Costs=read.csv(paste(scenario,'Costs.csv',sep=""),check.names = FALSE)
     #Emissions=read.csv(paste(scenario,'Emissions.csv',sep=""),check.names = FALSE)
     
@@ -131,8 +139,8 @@ mergeScenariosDf= function(scenarios,TU=F){
     #                              |Emissions$Category=="Buildings"
     #                              |Emissions$Category=="Transportation")),]
     
-    #CapacitiesSub=renameTechnologies(CapacitiesSub)
-    #ProductionsSub=renameTechnologies(ProductionsSub)
+    CapacitiesSub=renameTechnologies(CapacitiesSub)
+    ProductionsSub=renameTechnologies(ProductionsSub)
     #CostsSub=renameTechnologies(CostsSub)
     #EmissionsSub=renameTechnologies(EmissionsSub)
     # 
@@ -185,16 +193,19 @@ totalPowerProductions = totals(mergedPowerProductions[,-c(1,2,4:8)],TRUE)
 
 names=c("totalPowerCapacities.csv","totalPowerProductions.csv")#,"totalPowerEmissions.csv","totalPowerCosts.csv")
 
-if(TU==F){
-write.csv(totalPowerCapacities,"Tables\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
-write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
-#write.csv(totalPowerEmissions,"Tables\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
-#write.csv(totalPowerCosts,"Tables\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
-}else{
+if(TU==T){
   write.csv(totalPowerCapacities,"Tables\\TUresults\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
   write.csv(totalPowerProductions,"Tables\\TUresults\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
   #write.csv(totalPowerEmissions,"Tables\\TUresults\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
   #write.csv(totalPowerCosts,"Tables\\TUresults\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
+}else if(Signy ==T){
+  write.csv(totalPowerCapacities,"Tables\\Signy\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
+  write.csv(totalPowerProductions,"Tables\\Signy\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
+}else{
+  write.csv(totalPowerCapacities,"Tables\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
+  write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
+  #write.csv(totalPowerEmissions,"Tables\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
+  #write.csv(totalPowerCosts,"Tables\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
 }
 
 #df=totalPowerCapacities

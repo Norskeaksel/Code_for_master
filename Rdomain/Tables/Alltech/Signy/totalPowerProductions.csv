@@ -1,0 +1,11 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+Signy\GradualDevelopment,P_Biomass,  0.41,  0.41,  0.35,  0.30,  0.25,  0.21,  0.18,  0.15
+Signy\GradualDevelopment,P_Gas,  2.17,  1.84,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00
+Signy\GradualDevelopment,RES_Hydro_Large, 71.40, 71.40, 71.40, 71.40, 71.40, 71.40, 71.40, 71.40
+Signy\GradualDevelopment,RES_Hydro_Small, 29.68, 29.68, 29.68, 29.68, 29.68, 29.68, 29.68, 29.68
+Signy\GradualDevelopment,RES_PV_Utility_Avg,  0.00,  0.00,  0.00,  0.00,  0.00,  1.96,  3.92,  3.92
+Signy\GradualDevelopment,RES_PV_Utility_Opt,  0.00,  0.00,  0.00,  0.00,  2.30,  4.61,  4.61,  4.61
+Signy\GradualDevelopment,RES_Wind_Offshore_Transitional,  0.00,  0.00,  0.00,  0.00,  0.00, 23.78, 23.78, 23.80
+Signy\GradualDevelopment,RES_Wind_Onshore_Avg,  2.29,  2.29,  2.27, 11.87, 21.30, 20.10, 20.10, 20.10
+Signy\GradualDevelopment,RES_Wind_Onshore_Opt,  0.00,  0.00, 16.72, 33.45, 33.45, 33.45, 33.45, 33.45
+Signy\GradualDevelopment,Sum,105.95,105.62,120.42,146.70,158.38,185.18,187.11,187.11

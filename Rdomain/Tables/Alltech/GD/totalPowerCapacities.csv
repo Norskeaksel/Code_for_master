@@ -1,0 +1,11 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+GradualDevelopment,P_Biomass, 0.55, 0.41, 0.31, 0.23, 0.17, 0.025, 0.025, 0.025
+GradualDevelopment,P_Gas, 1.20, 1.20, 1.15, 1.11, 1.11, 1.109, 1.102, 0.054
+GradualDevelopment,RES_Hydro_Large,24.70,24.70,24.70,24.70,24.70,24.700,24.700,24.700
+GradualDevelopment,RES_Hydro_Small, 6.30, 6.30, 6.30, 6.30, 6.30, 6.300, 6.300, 6.300
+GradualDevelopment,RES_PV_Utility_Avg, 0.00, 0.00, 0.00, 0.00, 0.00, 2.600, 5.200, 5.200
+GradualDevelopment,RES_PV_Utility_Opt, 0.00, 0.00, 0.00, 0.00, 2.60, 5.200, 5.200, 5.200
+GradualDevelopment,RES_Wind_Offshore_Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 6.094, 6.094, 6.101
+GradualDevelopment,RES_Wind_Onshore_Avg, 1.20, 1.20, 1.18, 6.19,11.11,10.482,10.482,10.482
+GradualDevelopment,RES_Wind_Onshore_Opt, 0.00, 0.00, 6.98,13.95,13.95,13.953,13.953,13.953
+GradualDevelopment,Sum,33.95,33.81,40.62,52.49,59.95,70.463,73.056,72.015

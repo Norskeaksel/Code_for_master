@@ -1,8 +1,0 @@
-Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
-SocietalCommitment,Hydro,31.00,31.00,31.00,31.00,31.00,31.00,31.00,31.000
-SocietalCommitment,PV, 0.00, 0.00, 0.00, 0.00,12.74,13.17,15.46,17.291
-SocietalCommitment,Thermal, 1.75, 1.61, 1.46, 1.34, 1.28, 1.13, 1.13, 0.079
-SocietalCommitment,Wind Offshore Deep, 0.00, 0.00, 0.00, 0.00, 1.04, 1.04, 1.04, 1.187
-SocietalCommitment,Wind Offshore Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0, 0
-SocietalCommitment,Wind Onshore, 1.20, 8.18,16.32,22.91,27.91,27.73,26.89,25.715
-SocietalCommitment,Sum,33.95,40.79,48.78,55.25,73.97,74.07,75.52,75.272
