@@ -10,7 +10,7 @@ rm(list=ls())
 scenario="GradualDevelopment" #Only needed for testing/debugging purposes
 scenarios=c("DirectedTransition")# SocietalCommitment 
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
-TU=T
+TU=F
 region="NO"
 toThermal=function(df){
   col="Technology"
@@ -113,7 +113,7 @@ mergeScenariosDf= function(scenarios,TU=F){
                                    |Capacities$Category=="Industry"
                                    |Capacities$Category=="Buildings"
                                    |Capacities$Category=="Transportation")) ,]
-    ProductionsSub=Productions[which(Productions$Region== 
+    ProductionsSub=Productions[which(Productions$Region==region 
                                      & Productions$Type=="Production"
                                      & (Productions$Category=="Power"
                                      |Productions$Category=="Industry"
