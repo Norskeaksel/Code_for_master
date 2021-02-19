@@ -1,0 +1,8 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+Signy\GradualDevelopment,Hydro,101.08,101.08,101.08,101.08,101.08,101.08,101.08,101.08
+Signy\GradualDevelopment,PV,  0.00,  0.00,  0.00,  0.00,  2.30,  6.56,  8.52,  8.52
+Signy\GradualDevelopment,Thermal,  2.58,  2.25,  0.35,  0.30,  0.25,  0.21,  0.18,  0.15
+Signy\GradualDevelopment,Wind Offshore Deep,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00
+Signy\GradualDevelopment,Wind Offshore Transitional,  0.00,  0.00,  0.00,  0.00,  0.00, 23.78, 23.78, 23.80
+Signy\GradualDevelopment,Wind Onshore,  2.29,  2.29, 18.99, 45.32, 54.75, 53.55, 53.55, 53.55
+Signy\GradualDevelopment,Sum,105.95,105.62,120.42,146.70,158.38,185.18,187.11,187.11

@@ -7,12 +7,13 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="GradualDevelopment" #Only needed for testing/debugging purposes
-scenarios=c("GradualDevelopment")# SocietalCommitment 
+scenario="MiddleEarth" #Only needed for testing/debugging purposes
+scenarios=c("SocietalCommitment")#MiddleEarth")# GradualDevelopment, SocietalCommitment
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=F
-Signy=T #Makes read csv separatpr ";"
-region="NO"
+Signy=T
+AggrigateTechnologies=T
+regions=c("NO")
 
 toThermal=function(df){
   col="Technology"
@@ -84,7 +85,6 @@ mergeScenariosDf= function(scenarios,TU=F){
       scenarios[i]=paste("TU\\",scenarios[i],sep="")
     }
   }else if(Signy==T){
-    sep=";"
     for(i in 1:length(scenarios)){
       scenarios[i]=paste("Signy\\",scenarios[i],sep="")
     }
@@ -115,14 +115,14 @@ mergeScenariosDf= function(scenarios,TU=F){
     #Costs[is.na(Costs)] = 0
     #Emissions[is.na(Emissions)] = 0
     
-    CapacitiesSub=Capacities[which(Capacities$Region==region 
-                                   & Capacities$Type=="TotalCapacity" 
+    CapacitiesSub=Capacities[which(Capacities$Region==region &
+                                    Capacities$Type=="TotalCapacity" 
                                    & (Capacities$Category=="Power"
                                    |Capacities$Category=="Industry"
                                    |Capacities$Category=="Buildings"
                                    |Capacities$Category=="Transportation")) ,]
-    ProductionsSub=Productions[which(Productions$Region==region 
-                                     & Productions$Type=="Production"
+    ProductionsSub=Productions[which(Productions$Region==region &
+                                     Productions$Type=="Production"
                                      & (Productions$Category=="Power"
                                      |Productions$Category=="Industry"
                                        |Productions$Category=="Buildings"
@@ -139,11 +139,13 @@ mergeScenariosDf= function(scenarios,TU=F){
     #                              |Emissions$Category=="Buildings"
     #                              |Emissions$Category=="Transportation")),]
     
-    CapacitiesSub=renameTechnologies(CapacitiesSub)
-    ProductionsSub=renameTechnologies(ProductionsSub)
-    #CostsSub=renameTechnologies(CostsSub)
-    #EmissionsSub=renameTechnologies(EmissionsSub)
-    # 
+    if(AggrigateTechnologies==T){
+      CapacitiesSub=renameTechnologies(CapacitiesSub)
+      ProductionsSub=renameTechnologies(ProductionsSub)
+      #CostsSub=renameTechnologies(CostsSub)
+      #EmissionsSub=renameTechnologies(EmissionsSub)
+    }
+   
     # if(is.null(EmissionsSub$`2045`)){
     #   EmissionsSub$`2045`=0
     # }
@@ -160,55 +162,58 @@ mergeScenariosDf= function(scenarios,TU=F){
   return (list(mergedCapacitiesSubdf,mergedProductionsSubdf))#,mergedEmissionsSubdf,mergedCostsSubdf))
 }
 
-
-dfList=mergeScenariosDf(scenarios,TU)
-mergedCapacitiesSubdf <- dfList[[1]]
-mergedProductionsSubdf <- dfList[[2]]
-#mergedEmissionsSubdf <- dfList[[3]]
-#mergedCostsSubdf <- dfList[[4]]
-
-# View(mergedPowerCapacitiesSubdf)
-# View(mergedPowerProductionsSubdf)
-# View(mergedPowerEmissionsSubdf)
-# View(mergedPowerCostsSubdf)
- 
-mergedPowerCapacities=mergedCapacitiesSubdf[mergedCapacitiesSubdf$Category=="Power",]
-mergedPowerProductions=mergedProductionsSubdf[mergedProductionsSubdf$Category=="Power",]
-# mergedPowerEmissions=mergedEmissionsSubdf[mergedEmissionsSubdf$Category=="Power",]
-# mergedPowerCosts=mergedCostsSubdf[mergedCostsSubdf$Category=="Power",]
-# View(mergedPowerCapacities)
-# View(mergedPowerProductions)
-# View(mergedPowerEmissions)
-# View(mergedPowerCosts)
-
-totalPowerCapacities = totals(mergedPowerCapacities[,-c(1,2,4)])
-totalPowerProductions = totals(mergedPowerProductions[,-c(1,2,4:8)],TRUE)
-# totalPowerEmissions = totals(mergedPowerEmissions[,-c(1:3,5)])
-# totalPowerCosts =totals(mergedPowerCosts[,-c(1,2,4)])
-
-# View(totalPowerCapacities)
-# View(totalPowerProductions)
-# View(totalPowerEmissions)
-# View(totalPowerCosts)
-
-names=c("totalPowerCapacities.csv","totalPowerProductions.csv")#,"totalPowerEmissions.csv","totalPowerCosts.csv")
-
-if(TU==T){
-  write.csv(totalPowerCapacities,"Tables\\TUresults\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
-  write.csv(totalPowerProductions,"Tables\\TUresults\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
-  #write.csv(totalPowerEmissions,"Tables\\TUresults\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
-  #write.csv(totalPowerCosts,"Tables\\TUresults\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
-}else if(Signy ==T){
-  write.csv(totalPowerCapacities,"Tables\\Signy\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
-  write.csv(totalPowerProductions,"Tables\\Signy\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
-}else{
-  write.csv(totalPowerCapacities,"Tables\\totalPowerCapacities.csv",row.names=FALSE, quote = FALSE)
-  write.csv(totalPowerProductions,"Tables\\totalPowerProductions.csv",row.names=FALSE, quote = FALSE)
-  #write.csv(totalPowerEmissions,"Tables\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
-  #write.csv(totalPowerCosts,"Tables\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
+for(i in regions){
+  region=i
+  dfList=mergeScenariosDf(scenarios,TU)
+  mergedCapacitiesSubdf <- dfList[[1]]
+  mergedProductionsSubdf <- dfList[[2]]
+  #mergedEmissionsSubdf <- dfList[[3]]
+  #mergedCostsSubdf <- dfList[[4]]
+  
+  # View(mergedPowerCapacitiesSubdf)
+  # View(mergedPowerProductionsSubdf)
+  # View(mergedPowerEmissionsSubdf)
+  # View(mergedPowerCostsSubdf)
+   
+  mergedPowerCapacities=mergedCapacitiesSubdf[mergedCapacitiesSubdf$Category=="Power",]
+  mergedPowerProductions=mergedProductionsSubdf[mergedProductionsSubdf$Category=="Power",]
+  # mergedPowerEmissions=mergedEmissionsSubdf[mergedEmissionsSubdf$Category=="Power",]
+  # mergedPowerCosts=mergedCostsSubdf[mergedCostsSubdf$Category=="Power",]
+  # View(mergedPowerCapacities)
+  # View(mergedPowerProductions)
+  # View(mergedPowerEmissions)
+  # View(mergedPowerCosts)
+  
+  totalPowerCapacities = totals(mergedPowerCapacities[,-c(1,2,4)])
+  totalPowerProductions = totals(mergedPowerProductions[,-c(1,2,4:8)],TRUE)
+  # totalPowerEmissions = totals(mergedPowerEmissions[,-c(1:3,5)])
+  # totalPowerCosts =totals(mergedPowerCosts[,-c(1,2,4)])
+  
+  View(totalPowerCapacities)
+  View(totalPowerProductions)
+  # View(totalPowerEmissions)
+  # View(totalPowerCosts)
+  
+  names=c("totalPowerCapacities.csv","totalPowerProductions.csv")#,"totalPowerEmissions.csv","totalPowerCosts.csv")
+  
+  if(TU==T){
+    write.csv(totalPowerCapacities,paste("Tables\\TUresults\\totalPowerCapacities",region,".csv",sep="")
+              ,row.names=FALSE, quote = FALSE)
+    write.csv(totalPowerProductions,paste("Tables\\TUresults\\totalPowerProductions",region,".csv",sep="")
+              ,row.names=FALSE, quote = FALSE)
+    #write.csv(totalPowerEmissions,"Tables\\TUresults\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
+    #write.csv(totalPowerCosts,"Tables\\TUresults\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
+  }else if(Signy ==T){
+    write.csv(totalPowerCapacities,paste("Tables\\Signy\\totalPowerCapacities",region,".csv",sep=""),
+              row.names=FALSE, quote = FALSE)
+    write.csv(totalPowerProductions,paste("Tables\\Signy\\totalPowerProductions",region,".csv",sep="")
+              ,row.names=FALSE, quote = FALSE)
+  }else{
+    write.csv(totalPowerCapacities,paste("Tables\\totalPowerCapacities",region,".csv",sep="")
+              ,row.names=FALSE, quote = FALSE)
+    write.csv(totalPowerProductions,paste("Tables\\totalPowerProductions",region,".csv",sep="")
+              ,row.names=FALSE, quote = FALSE)
+    #write.csv(totalPowerEmissions,"Tables\\totalPowerEmissions.csv",row.names=FALSE, quote = FALSE)
+    #write.csv(totalPowerCosts,"Tables\\totalPowerCosts.csv",row.names=FALSE, quote = FALSE)
+  }
 }
-
-#df=totalPowerCapacities
-#df=year2Col(totalPowerCapacities)
-#View(df)
-
