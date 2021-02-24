@@ -12,59 +12,96 @@ from plotingFunctions import *
 # from IPython.core.interactiveshell import InteractiveShell
 # InteractiveShell.ast_node_interactivity = "all"
 
-os.chdir("C:\\Users\\ahsor\\Dropbox\\Masteroppgave\\PlotData")
-Alltech=""#Alltech\\"
+Alltech = ""  # Alltech\\"
 # Read our new capacities
-#SCC = pd.read_csv("Rdomain\\Tables\\SC\\totalPowerCapacities.csv")
-#TFC = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacities.csv")
-#DTC = pd.read_csv("Rdomain\\Tables\\DT\\totalPowerCapacities.csv")
-GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacities.csv")
-print(GDC)
+# SCC = pd.read_csv("Rdomain\\Tables\\SC\\totalPowerCapacities.csv")
+# TFC = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacities.csv")
+# DTC = pd.read_csv("Rdomain\\Tables\\DT\\totalPowerCapacities.csv")
+# GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacities.csv")
+
 # Read our new productions
-#SCP = pd.read_csv("Rdomain\\Tables\\SC\\totalPowerProductions.csv")
-#TFP = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductions.csv")
-#DTP = pd.read_csv("Rdomain\\Tables\\DT\\totalPowerProductions.csv")
-GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductions.csv")
+# SCP = pd.read_csv("Rdomain\\Tables\\SC\\totalPowerProductions.csv")
+# TFP = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductions.csv")
+# DTP = pd.read_csv("Rdomain\\Tables\\DT\\totalPowerProductions.csv")
+# GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductions.csv")
 
 # Read TU Capacities
-#TU_SCC = pd.read_csv("Rdomain\\Tables\\TUresults\\SC\\totalPowerCapacities.csv")
-#TU_TFC = pd.read_csv("Rdomain\\Tables\\TUresults\\TF\\totalPowerCapacities.csv")
-#TU_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\DT\\totalPowerCapacities.csv")
+"""TU_SCC = pd.read_csv("Rdomain\\Tables\\TUresults\\SC\\totalPowerCapacitiesNO.csv")
+TU_TFC = pd.read_csv("Rdomain\\Tables\\TUresults\\TF\\totalPowerCapacities.csv")
+TU_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\DT\\totalPowerCapacities.csv")
 TU_GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerCapacities.csv")
-print(TU_GDC)
+
 # Read TU productions
-#TU_SCP = pd.read_csv("Rdomain\\Tables\\TUresults\\SC\\totalPowerProductions.csv")
-#TU_TFP = pd.read_csv("Rdomain\\Tables\\TUresults\\TF\\totalPowerProductions.csv")
-#TU_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\DT\\totalPowerProductions.csv")
-TU_GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerProductions.csv")
+TU_SCP = pd.read_csv("Rdomain\\Tables\\TUresults\\SC\\totalPowerProductionsNO.csv")
+TU_TFP = pd.read_csv("Rdomain\\Tables\\TUresults\\TF\\totalPowerProductions.csv")
+TU_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\DT\\totalPowerProductions.csv")
+TU_GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerProductions.csv")"""
+
+# Read TF regions
+TF_NO1C = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacitiesNO1.csv")
+TF_NO2C = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacitiesNO2.csv")
+
+TF_NO1P = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductionsNO1.csv")
+TF_NO2P = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductionsNO2.csv")
 
 # Read TU CPLEX results
-#TU_CPLEX_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\DT_CPLEX\\totalPowerCapacities.csv")
-#TU_CPLEX_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\DT_CPLEX\\totalPowerProductions.csv")
+# TU_CPLEX_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\DT_CPLEX\\totalPowerCapacities.csv")
+# TU_CPLEX_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\DT_CPLEX\\totalPowerProductions.csv")
 
 # Read our old capacities
-#TFC_Old = pd.read_csv("OldProjectResults\\TF\\TFtotalPowerCapacities.csv")
-#DTC_Old = pd.read_csv("OldProjectResults\\DT\\DTtotalPowerCapacities.csv")
-#GDC_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerCapacities.csv")
+# TFC_Old = pd.read_csv("OldProjectResults\\TF\\TFtotalPowerCapacities.csv")
+# DTC_Old = pd.read_csv("OldProjectResults\\DT\\DTtotalPowerCapacities.csv")
+# GDC_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerCapacities.csv")
 
 # Read our old productions
-#TFP_Old = pd.read_csv("OldProjectResults\\TF\\TFtotalPowerProductions.csv")
-#DT_Old = pd.read_csv("OldProjectResults\\DT\\DTtotalPowerProductions.csv")
-#GDP_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerProductions.csv")
+# TFP_Old = pd.read_csv("OldProjectResults\\TF\\TFtotalPowerProductions.csv")
+# DT_Old = pd.read_csv("OldProjectResults\\DT\\DTtotalPowerProductions.csv")
+# GDP_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerProductions.csv")
 
 # Read Signys files
-#Si_GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Signy\\totalPowerCapacities.csv")
-#Si_GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Signy\\totalPowerProductions.csv")
+Si_GDC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\GD\\totalPowerCapacities.csv")
+Si_GDP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\GD\\totalPowerProductions.csv")
+Si_TFC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\TF\\totalPowerCapacitiesNO.csv")
+Si_TFP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\TF\\totalPowerProductionsNO.csv")
+Si_DTC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\DT\\totalPowerCapacitiesNO.csv")
+Si_DTP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\DT\\totalPowerProductionsNO.csv")
+Si_SCC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\SC\\totalPowerCapacitiesNO.csv")
+Si_SCP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\SC\\totalPowerProductionsNO.csv")
 
-#All GG
-#plotDfs([SCC,TFC,DTC,GDC], "Power Capacities [GW] All scenarios [SC,TF,DT,GD]", False)
-#plotDfs([SCP,TFP,DTP,GDP], "Power Productions [TWh] All scenarios [SC,TF,DT,GD]", False)
+# Read MiddleEarth files
+# MC=[pd.read_csv("Rdomain\\Tables\\"+Alltech+"MiddleEarth\\totalPowerCapacitiesMordor"+str(i)+".csv") for i in range(1,6)]
+# MP=[pd.read_csv("Rdomain\\Tables\\"+Alltech+"MiddleEarth\\totalPowerProductionsMordor"+str(i)+".csv") for i in range(1,6)]
+
+# All GG
+# plotDfs([SCC,TFC,DTC,GDC], "Power Capacities [GW] All scenarios [SC,TF,DT,GD]", False)
+# plotDfs([SCP,TFP,DTP,GDP], "Power Productions [TWh] All scenarios [SC,TF,DT,GD]", False)
+
+# Mordor
+# plotDfs(MC, "Mordor [1-5] Power Capacities [GW]", False)
+# plotDfs(MP, "Mordor [1-5] Power Productions [TWh]", False)
 
 
+# Signy vs TU
+# plotDfs([Si_GDC, TU_GDC], "GradualDevelopment Power Capacities [GW] Signy vs TU", False)
+# plotDfs([Si_GDP, TU_GDP], "GradualDevelopment Power Productions [TWh] Signy vs TU", False)
+# plotDfs([Si_TFC, TU_TFC], "TechnoFriendly Power Capacities [GW] Signy vs TU", False)
+# plotDfs([Si_TFP, TU_TFP], "TechnoFriendly Power Productions [TWh] Signy vs TU", False)
+# plotDfs([Si_DTC, TU_DTC], "DirectedTransition Power Capacities [GW] Signy vs TU", False)
+# plotDfs([Si_DTP, TU_DTP], "DirectedTransition Power Productions [TWh] Signy vs TU", False)
+# plotDfs([Si_SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] Signy vs TU", False)
+# plotDfs([Si_SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] Signy vs TU", False)
+
+# TechnoFriendlyRegions
+plotDfs([TF_NO1C, TF_NO2C, Si_TFC], "TechnoFriendly Power Capacities [GW] NO1 vs NO2 vs Original", False)
+plotDfs([TF_NO1P, TF_NO2P, Si_TFP], "TechnoFriendly Power Productions [GW] NO1 vs NO2 vs Original", False)
+
+"""
 # GG VS RR
-plotDfs([GDC, TU_GDC], "GradualDevelopment Power Capacities [GW] GG vs RR ", False)
-plotDfs([GDP, TU_GDP], "GradualDevelopment Power Productions [TWh] GG vs RR", False)
-"""plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
+
+plotDfs([GDC, TU_GDC, Si_GDC], "GradualDevelopment Power Capacities [GW] GG vs RR vs Signy", False)
+plotDfs([GDP, TU_GDP, Si_GDP], "GradualDevelopment Power Productions [TWh] GG vs RR vs Signy", False)
+
+plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
 plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
 
 # GG_New vs GG_Old

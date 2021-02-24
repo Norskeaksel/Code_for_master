@@ -7,13 +7,13 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="MiddleEarth" #Only needed for testing/debugging purposes
-scenarios=c("SocietalCommitment")#MiddleEarth")# GradualDevelopment, SocietalCommitment
+scenario="TechnoFriendly" #Only needed for testing/debugging purposes
+scenarios=c("TechnoFriendly")#MiddleEarth")# GradualDevelopment, SocietalCommitment, TechnoFriendly
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 TU=F
-Signy=T
+Signy=F
 AggrigateTechnologies=T
-regions=c("NO")
+regions=c("NO1","NO2")
 
 toThermal=function(df){
   col="Technology"

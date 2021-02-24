@@ -30,25 +30,12 @@ def colnum_string(n):
 
 def getIndexes(df, value):
     listOfPos = []
-
-    # isin() method will return a dataframe with
-    # boolean values, True at the positionsag
+    result = df.isin([value])  # isin() method will return a dataframe with boolean values, True at the positions
     # where element exists
-    result = df.isin([value])
-
-    # any() method will return
-    # a boolean series
-    seriesObj = result.any()
-
-    # Get list of column names where
-    # element exists
-    columnNames = list(seriesObj[seriesObj == True].index)
-
-    # Iterate over the list of columns and
-    # extract the row index where element exists
-    for col in columnNames:
+    seriesObj = result.any()  # any() method will return a boolean series
+    columnNames = list(seriesObj[seriesObj == True].index)  # Get list of column names where element exists
+    for col in columnNames:  # Iterate over the list of columns and extract the row index where element exists
         rows = list(result[col][result[col] == True].index)
-
         for row in rows:
             # idx=df.columns.get_loc(col)
             listOfPos.append((row, col))
@@ -80,13 +67,13 @@ def addRows(df, listOfPositions):
             df = df.append(row)
 
     df = df.reset_index(drop=True)
-    # df = df.drop(df.index[delete])
+    df = df.drop(df.index[delete])
     return df
 
 
 def addCols(df):
     series = df[original_region]
-    # del df["NO"]
+    del df[original_region]
     for reg in new_regions:
         df[reg] = series
 
@@ -103,41 +90,16 @@ def addEmptyRows(df, skip_rows):
     return df
 
 
-def fixStupidErrors(df, first_lines, n, skiprows):
-    """for idx, col in enumerate(df.columns):
-        header = df.iloc[0, idx].split('.')
-        if len(header) > 1:
-            df.iloc[0, idx] = header[0]"""
+def removeTrails(df):
+    for col in df.columns:
+        try:
+            header = df.iloc[0, col].split('.')
+            if len(header) > 1:
+                df.iloc[0, col] = header[0]
+        except AttributeError:
+            pass
 
-    first_sheet_lines = first_lines[n]
-    someNa = first_sheet_lines.isnull().values.any()
-    onlyNa = first_sheet_lines.isnull().sum().sum() == len(first_sheet_lines.columns)
-    new_skiprows = skiprows
-    if someNa and not onlyNa and n != 'Sets':
-        new_skiprows = skiprows - 1
-        df = first_sheet_lines.append(df)
-
-    return df, new_skiprows
-
-
-def toExcel(dfs, names, filename, first_lines, skip_rows):
-    writer = pd.ExcelWriter('ModifiedInput\\Modified_' + filename)
-    for df, n in zip(dfs, names):
-        #df = df.dropna(axis=1, how='all')
-        df = df.T.reset_index().T
-        for idx, col in enumerate(df):
-            val = df.iloc[0, idx]
-            if type(val) == str and 'Unnamed' in val:
-                df.iloc[0, idx] = ''
-
-        #df, sr = fixStupidErrors(df, first_lines, n, skip_rows)
-        if n != 'Sets':
-            #df = addEmptyRows(df, sr)
-            df = first_lines[n].append(df,ignore_index=True)
-
-        df.to_excel(writer, sheet_name=n, header=False, index=False)
-
-    writer.save()
+    return df
 
 
 def deleteNonNO(df, listOfPositions):
@@ -157,16 +119,37 @@ def deleteNonNO(df, listOfPositions):
     return cut_df
 
 
-new_regions = ["Mordor" + str(i) for i in range(1, 6)]
-original_region="Mordor"
+def toExcel(dfs, names, filename, first_lines):
+    writer = pd.ExcelWriter('ModifiedInput\\Modified_' + filename)
+    for df, n in zip(dfs, names):
+        df = df.dropna(axis=0, how='all')
+        df = df.T.reset_index().T
+        for idx, col in enumerate(df):
+            val = df.iloc[0, idx]
+            if type(val) == str and 'Unnamed' in val:
+                df.iloc[0, idx] = ''
+
+        df = removeTrails(df)
+        if n != 'Sets':
+            # df = addEmptyRows(df, sr)
+            df = first_lines[n].append(df, ignore_index=True)
+
+        df.to_excel(writer, sheet_name=n, header=False, index=False)
+
+    writer.save()
+
+
+original_region = "NO"
+new_regions = [original_region + str(i) for i in range(1, 6)]
+
 n = len(new_regions)
-datafile = 'Data_MiddleEarth_v01.xlsx'
+datafile = 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'  # 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'
 skip_rows = 4
 
-datafile = 'Hourly_Data_MiddleEarth_v01.xlsx'
+datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
 skip_rows = 0
 
-print("Reading data")
+print("Reading from", datafile)
 try:
     Sets_sheet = pd.read_excel('Inputdata\\' + datafile, sheet_name='Sets')
 except:
@@ -182,7 +165,7 @@ for name, sheet in cut_sheets.items():
         # continue
         sheet = Sets_sheet
         regions = list(sheet["Region"])
-        # regions = [i for i in regions if i != "NO"]
+        regions = [i for i in regions if i != original_region]
         c = 0
         for idx, reg in enumerate(regions):
             if isNaN(reg):
@@ -199,6 +182,12 @@ for name, sheet in cut_sheets.items():
         names.append(name)
 
     else:
+        for nr, col in enumerate(sheet.columns):
+            if sheet[col].isnull().all() and 'Unnamed' in str(col):
+                sheet = sheet.iloc[:, : nr]
+                # print('Unnamed in',name, colnum_string(nr+1))
+                break
+
         listOfPositions = getIndexes(sheet, original_region)
         """sheet = deleteNonNO(sheet, listOfPositions)
         datafile = 'Needed_Norwegian_data_without_trade.xlsx'
@@ -217,5 +206,5 @@ for name, sheet in cut_sheets.items():
         dfs.append(sheet)
         names.append(name)
 
-print("Writing to Excel")
-toExcel(dfs, names, datafile, first_lines, skip_rows)
+print("Writing Modified", datafile, "to Excel")
+toExcel(dfs, names, datafile, first_lines)
