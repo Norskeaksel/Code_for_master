@@ -1,0 +1,8 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+TechnoFriendly,Hydro, 97.32, 97.32, 97.32, 97.32, 97.32, 97.32, 97.32, 97.32
+TechnoFriendly,PV,  0.00,  0.00,  3.39,  9.66, 12.55, 14.92, 17.29, 17.29
+TechnoFriendly,Thermal,  3.17,  2.76,  0.35,  0.30,  0.25,  0.21,  0.18,  0.95
+TechnoFriendly,Wind Offshore Deep,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00, 36.53, 37.17
+TechnoFriendly,Wind Offshore Transitional,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  4.41
+TechnoFriendly,Wind Onshore,  2.30,  2.30, 19.00, 35.38, 35.09, 34.85, 34.84, 29.82
+TechnoFriendly,Sum,102.80,102.38,120.06,142.66,145.21,147.30,186.16,186.96
