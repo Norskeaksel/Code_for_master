@@ -72,6 +72,9 @@ Si_SCP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\SC\\totalPowerProdu
 # MC=[pd.read_csv("Rdomain\\Tables\\"+Alltech+"MiddleEarth\\totalPowerCapacitiesMordor"+str(i)+".csv") for i in range(1,6)]
 # MP=[pd.read_csv("Rdomain\\Tables\\"+Alltech+"MiddleEarth\\totalPowerProductionsMordor"+str(i)+".csv") for i in range(1,6)]
 
+# Read GD files
+NO_GDC = [pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesNO"+str(i)+".csv") for i in range(1,6)]
+NO_GDP = [pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsNO"+str(i)+".csv") for i in range(1,6)]
 # All GG
 # plotDfs([SCC,TFC,DTC,GDC], "Power Capacities [GW] All scenarios [SC,TF,DT,GD]", False)
 # plotDfs([SCP,TFP,DTP,GDP], "Power Productions [TWh] All scenarios [SC,TF,DT,GD]", False)
@@ -92,8 +95,14 @@ Si_SCP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\SC\\totalPowerProdu
 # plotDfs([Si_SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] Signy vs TU", False)
 
 # TechnoFriendlyRegions
-plotDfs([TF_NO1C, TF_NO2C, Si_TFC], "TechnoFriendly Power Capacities [GW] NO1 vs NO2 vs Original", False)
-plotDfs([TF_NO1P, TF_NO2P, Si_TFP], "TechnoFriendly Power Productions [GW] NO1 vs NO2 vs Original", False)
+#plotDfs([TF_NO1C, TF_NO2C, Si_TFC], "TechnoFriendly Power Capacities [GW] NO1 vs NO2 vs Original", False)
+#plotDfs([TF_NO1P, TF_NO2P, Si_TFP], "TechnoFriendly Power Productions [GW] NO1 vs NO2 vs Original", False)
+
+# GradualDevelopmentRegions
+NO_GDC.append(Si_GDC)
+NO_GDP.append(Si_GDP)
+plotDfs(NO_GDC, "GradualDevelopment Power Capacities [GW] NO1-5 vs Original", False)
+plotDfs(NO_GDP, "GradualDevelopment Power Productions [GW] NO1-5 vs Original", False)
 
 """
 # GG VS RR
