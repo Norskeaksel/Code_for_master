@@ -1,5 +1,3 @@
-# from xlrd import open_workbook
-# book = open_workbook('Inputdata\\Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx')
 import pandas as pd
 import numpy as np
 import numbers
@@ -54,20 +52,22 @@ def printPositions(listOfPositions):
             fprint(pretty_loc)"""
 
 
-def addRows(df, listOfPositions):
+def addRows(df, listOfPositions, only_delete=False):
     delete = []
     for pos in listOfPositions:
         row_nr = pos[0]
         delete.append(row_nr)
-        row = (df.iloc[row_nr, :])
-        rep = new_regions.copy()
-        rep.insert(0, original_region)
-        for i in range(n):
-            row = row.replace(rep[i], rep[i + 1])
-            df = df.append(row)
+        if not only_delete:
+            row = (df.iloc[row_nr, :])
+            rep = new_regions.copy()
+            rep.insert(0, original_region)
+            for i in range(n):
+                row = row.replace(rep[i], rep[i + 1])
+                df = df.append(row)
 
     df = df.reset_index(drop=True)
     df = df.drop(df.index[delete])
+
     return df
 
 
@@ -104,17 +104,10 @@ def removeTrails(df):
 
 def deleteNonNO(df, listOfPositions):
     keep_rows = [i[0] for i in listOfPositions]
-    # keep_cols = [i[1] for i in listOfPositions]
-    # keep_cols += ([i for i in df.columns if isinstance(i, numbers.Number) or'named' in i])
-    # keep_cols = set(keep_cols)
-    # cut_df = df[keep_cols]
-    # if 'NO' in df.columns:
-    # cut_df['NO'] = df['NO']
-
     cut_df = df.iloc[keep_rows]
     cut_df = cut_df.reset_index(drop=True)
-    # if 'Trade' in name:
-    # cut_df = pd.DataFrame()
+    if listOfPositions == [] or 'Trade' in name:
+        cut_df = pd.DataFrame()
 
     return cut_df
 
@@ -141,14 +134,17 @@ def toExcel(dfs, names, filename, first_lines):
 
 original_region = "NO"
 new_regions = [original_region + str(i) for i in range(1, 6)]
+insert_custom_data = 1
 
-n = len(new_regions)
+insert_datafile = "Modified_Needed_Norwegian_data_without_trade.xlsx"
+
 datafile = 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'  # 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'
 skip_rows = 4
 
-datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
-skip_rows = 0
+# datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
+# skip_rows = 0
 
+n = len(new_regions)
 print("Reading from", datafile)
 try:
     Sets_sheet = pd.read_excel('Inputdata\\' + datafile, sheet_name='Sets')
@@ -157,7 +153,13 @@ except:
 
 cut_sheets = pd.read_excel('Inputdata\\' + datafile, sheet_name=None, skiprows=range(0, skip_rows))
 first_lines = pd.read_excel('Inputdata\\' + datafile, sheet_name=None, header=None, nrows=skip_rows)
-print("Adding regions")
+
+if insert_custom_data:
+    print('Inserting custom data')
+    custom_sheets = pd.read_excel('ModifiedInput\\' + insert_datafile, sheet_name=None, skiprows=range(0, skip_rows))
+else:
+    print("Adding regions")
+
 dfs = []
 names = []
 for name, sheet in cut_sheets.items():
@@ -166,6 +168,7 @@ for name, sheet in cut_sheets.items():
         sheet = Sets_sheet
         regions = list(sheet["Region"])
         regions = [i for i in regions if i != original_region]
+
         c = 0
         for idx, reg in enumerate(regions):
             if isNaN(reg):
@@ -189,19 +192,29 @@ for name, sheet in cut_sheets.items():
                 break
 
         listOfPositions = getIndexes(sheet, original_region)
-        """sheet = deleteNonNO(sheet, listOfPositions)
-        datafile = 'Needed_Norwegian_data_without_trade.xlsx'
-        datafile = 'Needed_Norwegian_data_with_trade.xlsx'
-        listOfPositions = getIndexes(sheet, "NO")"""
-        add = False
-        if listOfPositions != []:
-            # printPositions(listOfPositions)
-            sheet = addRows(sheet, listOfPositions)
-            add = True
+        ### ISOLATE NORWEGIAN DATA
+        if not insert_custom_data:
+            sheet = deleteNonNO(sheet, listOfPositions)
+            listOfPositions = getIndexes(sheet, original_region)
+            if sheet.empty:
+                continue
+            datafile = 'Needed_Norwegian_data_without_trade.xlsx'
+            # datafile = 'Needed_Norwegian_data_with_trade.xlsx'
+        ### END ISOLATING NORWEGIAN DATA
 
-        if original_region in sheet.columns:
-            sheet = addCols(sheet)
-            add = True
+        if insert_custom_data and name in custom_sheets.keys():
+            sheet = addRows(sheet, listOfPositions,True)
+            sheet = sheet.append(custom_sheets[name])
+
+        else:
+            if listOfPositions != []:
+                # printPositions(listOfPositions)
+                sheet = addRows(sheet, listOfPositions)
+
+            if original_region in sheet.columns:
+                sheet = addCols(sheet)
+
+
 
         dfs.append(sheet)
         names.append(name)
