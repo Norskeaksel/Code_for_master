@@ -44,8 +44,9 @@ def plotDfs(dfs, title, ascending=True):
             try:
                 color = colorMap[techColor[tech]]
             except:
-                color=None
-                #color = tuple(random.choice(range(32, 256, 32)) / 255 for _ in range(4))
+                techColor[tech]=tech
+                colorMap[tech]=tuple(random.choice(range(32, 256, 32)) / 255 for _ in range(4))
+                color = colorMap[tech]
 
             ax.bar(np.array(list(map(int, years))) + (i - (len(dfs) - 1) / 2) * width * 1.1, row[years], width,
                    label=tech,

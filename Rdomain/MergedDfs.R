@@ -26,7 +26,7 @@ toThermal=function(df){
       }
     }
     if(makeThermal){
-      df[row,col] = "Thermal"
+      df[row,col] = "Other"
     }
   }
   return (df)
