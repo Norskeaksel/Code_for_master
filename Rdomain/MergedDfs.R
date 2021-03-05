@@ -13,7 +13,7 @@ scenarios=c("GradualDevelopment")#MiddleEarth")# GradualDevelopment, SocietalCom
 technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_Rooftop_Commercial",
                "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
                "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
-               "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt")
+               "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
 TU=F
 Signy=F
 AggrigateTechnologies=T
@@ -222,5 +222,5 @@ plotfolder="plots\\"
 scenario="GradualDevelopment"
 source("PlottingFunctions.R")
 plotCategories(totalPowerBalance,totalPowerBalance$Type, "Power Balance", "TWh","Type")
-
+C:\Users\ahsor\Dropbox\Masteroppgave\PlotData\Rdomain
 

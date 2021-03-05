@@ -41,6 +41,7 @@ techColor = {
     "Use": "r",
     
     "P_Biomass": "bur",
+    "HLI_Biomass_CHP_CCS" : "r",
     "P_Gas": "hp",
     "RES_Hydro_Large": "bb",
     "RES_Hydro_Small": "wb",

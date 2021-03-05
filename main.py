@@ -12,23 +12,26 @@ from plotingFunctions import *
 # from IPython.core.interactiveshell import InteractiveShell
 # InteractiveShell.ast_node_interactivity = "all"
 
-Alltech = ""#Alltech\\"
+Alltech = "Alltech\\"
 # Read our new capacities
 # SCC = pd.read_csv("Rdomain\\Tables\\SC\\totalPowerCapacities.csv")
 # TFC = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacities.csv")
 # DTC = pd.read_csv("Rdomain\\Tables\\DT\\totalPowerCapacities.csv")
+DTC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"DT\\totalPowerCapacitiesNO.csv")
 GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesNO.csv")
 
 # Read our new productions
 # SCP = pd.read_csv("Rdomain\\Tables\\SC\\totalPowerProductions.csv")
 # TFP = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductions.csv")
 # DTP = pd.read_csv("Rdomain\\Tables\\DT\\totalPowerProductions.csv")
+DTP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"DT\\totalPowerProductionsNO.csv")
 GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsNO.csv")
 
 # # Read TU Capacities
 # TU_SCC = pd.read_csv("Rdomain\\Tables\\TUresults\\SC\\totalPowerCapacitiesNO.csv")
 # TU_TFC = pd.read_csv("Rdomain\\Tables\\TUresults\\TF\\totalPowerCapacities.csv")
 # TU_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\DT\\totalPowerCapacities.csv")
+TU_DTC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\DT\\totalPowerCapacitiesNO.csv")
 TU_GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerCapacitiesNO.csv")
 #TU_GDC_Old = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\Old\\totalPowerCapacities.csv")
 #
@@ -36,6 +39,7 @@ TU_GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerCapac
 # TU_SCP = pd.read_csv("Rdomain\\Tables\\TUresults\\SC\\totalPowerProductionsNO.csv")
 # TU_TFP = pd.read_csv("Rdomain\\Tables\\TUresults\\TF\\totalPowerProductions.csv")
 # TU_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\DT\\totalPowerProductions.csv")
+TU_DTP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\DT\\totalPowerProductionsNO.csv")
 TU_GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerProductionsNO.csv")
 #TU_GDP_Old = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\Old\\totalPowerProductions.csv")
 #
@@ -79,15 +83,15 @@ TU_GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\totalPowerProdu
 # NO_GDP = [pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductions.csv")]#+str(i)+".csv") for i in range(1,6)]
 
 # Read PowerBalance
-i=1
-NO_GD_PB = [pd.read_csv("Rdomain\\Tables\\" + Alltech + "GD\\PowerBalanceNO" + str(i) + ".csv").rename(
+i=""
+NO_DT_PB = [pd.read_csv("Rdomain\\Tables\\" + Alltech + "DT\\PowerBalanceNO" + str(i) + ".csv").rename(
     columns={"Type": "Technology"})#.apply(lambda x: x.abs() if np.issubdtype(x.dtype, np.number) else x)
             ]#for i in range(1, 6)]
-#plotDfs(NO_GD_PB, "Power Balance [Twh] Gradual Development",False)
-plotDfs([GDC, TU_GDC], "Power Capacities [GW] Our vs TU_New" ,False)
-#plotDfs([GDP,TU_GDP], "Power Productions [TWh] Our vs TU_New",False)
+plotDfs(NO_DT_PB, "Power Balance [Twh] Directed Transition",False)
+plotDfs([DTC, TU_DTC], "Power Capacities [GW] Our vs TU_New" ,False)
+plotDfs([DTP,TU_DTP], "Power Productions [TWh] Our vs TU_New",False)
 
-"""plotDfs(NO_GD_PB, "Power Balance [TWh]", False)
+"""
 
 # All GG
 plotDfs([SCC,TFC,DTC,GDC], "Power Capacities [GW] All scenarios [SC,TF,DT,GD]", False)
