@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-
 try:
     open('Output.txt', 'w').close()
 except:
@@ -51,7 +50,7 @@ def printPositions(listOfPositions):
             fprint(pretty_loc)"""
 
 
-def addRows(df, listOfPositions, only_delete=False):
+def addRows(df, listOfPositions, only_delete=False,divide=0):
     delete = []
     for pos in listOfPositions:
         row_nr = pos[0]
@@ -62,6 +61,8 @@ def addRows(df, listOfPositions, only_delete=False):
             rep.insert(0, original_region)
             for i in range(n):
                 row = row.replace(rep[i], rep[i + 1])
+                if divide:
+                    row[row.select_dtypes(include=['number']).columns] /= 5
                 df = df.append(row)
 
     df = df.reset_index(drop=True)
@@ -135,13 +136,13 @@ original_region = "NO"
 new_regions = [original_region + str(i) for i in range(1, 6)]
 insert_custom_data = 1
 
-insert_datafile = "Modified_Needed_Norwegian_data_without_trade.xlsx"
+insert_datafile = "Trade\\Modified_Needed_Norwegian_data_without_trade.xlsx"
 
 datafile = 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'  # 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'
 skip_rows = 4
 
-# datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
-# skip_rows = 0
+datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
+skip_rows = 0
 
 n = len(new_regions)
 print("Reading from", datafile)

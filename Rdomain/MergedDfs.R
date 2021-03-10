@@ -8,15 +8,15 @@ library(knitr)
 rm(list=ls())
 
 scenario="GradualDevelopment" #Only needed for testing/debugging purposes
-scenarios=c("GradualDevelopment")#MiddleEarth")# GradualDevelopment, SocietalCommitment, TechnoFriendly
-#technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
+scenarios=c("DirectedTransition")#MiddleEarth")# GradualDevelopment, SocietalCommitment, TechnoFriendly
+technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_Rooftop_Commercial",
                "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
                "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
                "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
-TU=F
+TU=T
 Signy=F
-AggrigateTechnologies=T
+AggrigateTechnologies=T #Should always be true because it sets adds unseen technologies with 0-values. Change technologies instead
 regions=c("NO")#1","NO2","NO3","NO4","NO5")
 sep=","
 
@@ -138,10 +138,10 @@ mergeScenariosDf= function(scenarios,TU=F){
                                       # |Productions$Category=="Buildings"
                                        #|Productions$Category=="Transportation")),]
     
-    if(AggrigateTechnologies==T){
+    #if(AggrigateTechnologies==T){
       CapacitiesSub=renameTechnologies(CapacitiesSub)
       ProductionsSub=renameTechnologies(ProductionsSub)
-    }
+    #}
     
     ProductionsUse=Productions[Productions$Type=="Use",]
     years=str(seq(2015,2050,5))
@@ -209,10 +209,10 @@ for(i in regions){
 }
 
 View(totalPowerCapacities)
-#View(totalPowerProductions)
+View(totalPowerProductions)
 #View(totalProductionsUse)
+#View(totalPowerBalance)
 
-View(totalPowerBalance)
 balance=totalPowerBalance
 balance$Type="Balance"
 balance=aggregate(.~Scenario+Type,balance,sum)
@@ -222,5 +222,4 @@ plotfolder="plots\\"
 scenario="GradualDevelopment"
 source("PlottingFunctions.R")
 plotCategories(totalPowerBalance,totalPowerBalance$Type, "Power Balance", "TWh","Type")
-C:\Users\ahsor\Dropbox\Masteroppgave\PlotData\Rdomain
 

@@ -75,6 +75,8 @@ def plotDfs(dfs, title, ascending=True):
         for trueIdx, (idx, row) in enumerate(df.iterrows()):
             use_base = True
             tech = row['Technology']
+            #if sum(np.array(row[2::])) == 0:
+                #continue
             if row[years][-1]<0:
                 use_base = False
             try:
