@@ -2,6 +2,7 @@
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 # plt.matplotlib.use('Qt5Agg') #Show plot in separate window
 
@@ -65,7 +66,7 @@ def plotDfs(dfs, title, ascending=True):
     opacity = 1
     fig, ax = plt.subplots()
     plt.grid(axis="y", zorder=0)
-
+    #plt.ylim([0, 50])
     for i in range(len(dfs)):
         df = dfs[i]
         df = df[df.Technology != "Sum"]
@@ -85,6 +86,7 @@ def plotDfs(dfs, title, ascending=True):
                 techColor[tech]=tech
                 colorMap[tech]=tuple(random.choice(range(32, 256, 32)) / 255 for i in range(4))
                 color = colorMap[tech]
+
             ax.bar(np.array(list(map(int, years))) + (i - (len(dfs) - 1) / 2) * width * 1.1, row[years], width,
                    label=tech,
                    bottom=base if use_base else negative_base, alpha=opacity, zorder=3, color=color)
@@ -93,8 +95,9 @@ def plotDfs(dfs, title, ascending=True):
             else:
                 negative_base += row[years]
 
-
-        ax.legend(df['Technology'])
+    patches=[mpatches.Patch(color=colorMap[techColor[tech]], label=tech) for tech in df['Technology']]
+    #colors=[colorMap[techColor[tech]] for tech in df['Technology']]
+    ax.legend(handles=patches)
 
     plt.title(title)
     # manager = plt.get_current_fig_manager()
