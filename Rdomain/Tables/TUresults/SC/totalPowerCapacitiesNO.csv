@@ -1,8 +1,16 @@
 Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
-TU\SocietalCommitment,Hydro,31.00,31.00,31.00,31.00,31.00,31.00,31.00,31.000
-TU\SocietalCommitment,PV, 0.00, 0.00, 0.00, 0.00,12.74,13.17,15.46,17.291
-TU\SocietalCommitment,Thermal, 1.75, 1.61, 1.46, 1.34, 1.28, 1.13, 1.13, 0.079
-TU\SocietalCommitment,Wind Offshore Deep, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.148
-TU\SocietalCommitment,Wind Offshore Transitional, 0.00, 0.00, 0.00, 0.00, 1.19, 1.19, 1.19, 1.194
-TU\SocietalCommitment,Wind Onshore, 1.20, 8.18,16.32,22.91,27.91,27.73,26.89,25.715
-TU\SocietalCommitment,Sum,33.95,40.79,48.78,55.25,74.12,74.23,75.68,75.427
+TU\SocietalCommitment,HLI_Biomass_CHP_CCS, 0.00, 0.00, 0.00, 0.00, 0.00, 0.000, 0.000, 0.000
+TU\SocietalCommitment,P_Biomass, 0.55, 0.41, 0.31, 0.23, 0.17, 0.025, 0.025, 0.025
+TU\SocietalCommitment,P_Gas, 1.20, 1.20, 1.15, 1.11, 1.11, 1.109, 1.102, 0.054
+TU\SocietalCommitment,RES_Hydro_Large,24.70,24.70,24.70,24.70,24.70,24.700,24.700,24.700
+TU\SocietalCommitment,RES_Hydro_Small, 6.30, 6.30, 6.30, 6.30, 6.30, 6.300, 6.300, 6.300
+TU\SocietalCommitment,RES_PV_Rooftop_Commercial, 0.00, 0.00, 0.00, 0.00, 0.00, 0.000, 0.374, 0.993
+TU\SocietalCommitment,RES_PV_Rooftop_Residential, 0.00, 0.00, 0.00, 0.00, 5.43, 5.428, 5.428, 5.428
+TU\SocietalCommitment,RES_PV_Utility_Avg, 0.00, 0.00, 0.00, 0.00, 0.00, 0.000, 0.000, 0.000
+TU\SocietalCommitment,RES_PV_Utility_Inf, 0.00, 0.00, 0.00, 0.00, 0.00, 0.000, 0.000, 0.000
+TU\SocietalCommitment,RES_PV_Utility_Opt, 0.00, 0.00, 0.00, 0.00, 2.60, 3.367, 5.200, 5.200
+TU\SocietalCommitment,RES_Wind_Offshore_Deep, 0.00, 0.00, 0.00, 0.00, 7.01, 7.131, 7.131, 7.131
+TU\SocietalCommitment,RES_Wind_Offshore_Transitional, 0.00, 0.00, 0.00, 0.00, 0.00, 0.000, 0.000, 0.000
+TU\SocietalCommitment,RES_Wind_Onshore_Avg, 1.20, 1.20, 1.19, 4.73, 4.56, 3.934, 3.929, 3.929
+TU\SocietalCommitment,RES_Wind_Onshore_Opt, 0.00, 6.98,13.95,13.95,13.95,13.953,13.155,12.938
+TU\SocietalCommitment,Sum,33.95,40.79,47.60,51.02,65.84,65.947,67.343,66.697

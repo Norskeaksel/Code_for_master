@@ -8,16 +8,16 @@ library(knitr)
 rm(list=ls())
 
 scenario="GradualDevelopment" #Only needed for testing/debugging purposes
-scenarios=c("DirectedTransition")#MiddleEarth")# GradualDevelopment, SocietalCommitment, TechnoFriendly
+scenarios=c("SocietalCommitment")#, "GradualDevelopment", "SocietalCommitment", "TechnoFriendly", "DirectedTransition")#, "MiddleEarth"
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
 technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_Rooftop_Commercial",
                "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
                "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
                "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
-TU=T
+TU=F
 Signy=F
 AggrigateTechnologies=T #Should always be true because it sets adds unseen technologies with 0-values. Change technologies instead
-regions=c("NO")#1","NO2","NO3","NO4","NO5")
+regions=c("NO")#,"Mordor2","Mordor3","Mordor4","Mordor5")
 sep=","
 
 
@@ -92,6 +92,36 @@ totals=function(df,PJ2Twh=FALSE, includeCategory=FALSE){
   return (df)
 }
 
+TUscenario=function(scenario){
+  TU_Capacities=read.csv(paste("TU\\",scenario,'Capacity.csv',sep=""),check.names = FALSE,sep = sep)
+  TU_Productions=read.csv(paste("TU\\",scenario,'Production.csv',sep=""),check.names = FALSE, sep = sep)
+  return (list(TU_Capacities,TU_Productions))
+}
+
+sumAll=function(Capacities,Productions,scenario){
+  CP=TUscenario(scenario)
+  TU_Capacities=CP[[1]]
+  TU_Productions=CP[[2]]
+  
+  names(TU_Capacities)[names(TU_Capacities) == "Year"] <- "2015"
+  names(TU_Capacities)[names(TU_Capacities) == "Value"] <- "2020"
+  
+  SumsC=colSums(Capacities[,(ncol(Capacities)-7):ncol(Capacities)], na.rm = TRUE)
+  TU_SumsC=colSums(TU_Capacities[,(ncol(TU_Capacities)-7):ncol(TU_Capacities)], na.rm = TRUE)
+  SumsP <- colSums(Productions[,(ncol(Productions)-7):ncol(Productions)], na.rm = TRUE)
+  TU_SumsP <- colSums(TU_Productions[,(ncol(TU_Productions)-7):ncol(TU_Productions)], na.rm = TRUE)
+  Cdiff=SumsC-TU_SumsC
+  Pdiff=SumsP-TU_SumsP
+  print(scenario)
+  print("Summed up Capacity Differences GR vs RR:")
+  print(Cdiff)
+  #print(SumsC)
+  print("Summed up Production Differences GR vs RR:")
+  print(Pdiff)
+  #print(sumsP)
+  writeLines("\n")
+}
+
 mergeScenariosDf= function(scenarios,TU=F){
   scenarioCapacitiesSub= list()
   scenarioProductionsSub = list()
@@ -113,6 +143,8 @@ mergeScenariosDf= function(scenarios,TU=F){
     Capacities=read.csv(paste(scenario,'Capacity.csv',sep=""),check.names = FALSE,sep = sep)
     Productions=read.csv(paste(scenario,'Production.csv',sep=""),check.names = FALSE, sep = sep)
     
+
+    
     Capacities$Scenario=scenario
     Productions$Scenario=scenario
     
@@ -122,6 +154,10 @@ mergeScenariosDf= function(scenarios,TU=F){
     
     Capacities[is.na(Capacities)] = 0
     Productions[is.na(Productions)] = 0
+    
+    #sumAll(Capacities,Productions, scenario)
+    #next
+
     
     Capacities=Capacities[Capacities$Region==region,]
     Productions=Productions[Productions$Region==region,]
@@ -213,13 +249,13 @@ View(totalPowerProductions)
 #View(totalProductionsUse)
 #View(totalPowerBalance)
 
-balance=totalPowerBalance
-balance$Type="Balance"
-balance=aggregate(.~Scenario+Type,balance,sum)
-totalPowerBalance=rbind(totalPowerBalance, balance)
-totalPowerBalance$Scenario=NULL
-plotfolder="plots\\"
-scenario="GradualDevelopment"
-source("PlottingFunctions.R")
-plotCategories(totalPowerBalance,totalPowerBalance$Type, "Power Balance", "TWh","Type")
+# balance=totalPowerBalance
+# balance$Type="Balance"
+# balance=aggregate(.~Scenario+Type,balance,sum)
+# totalPowerBalance=rbind(totalPowerBalance, balance)
+# totalPowerBalance$Scenario=NULL
+# plotfolder="plots\\"
+# scenario="GradualDevelopment"
+# source("PlottingFunctions.R")
+# plotCategories(totalPowerBalance,totalPowerBalance$Type, "Power Balance", "TWh","Type")
 

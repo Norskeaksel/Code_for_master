@@ -96,9 +96,7 @@ def plotDfs(dfs, title, ascending=True):
                 negative_base += row[years]
 
     patches=[mpatches.Patch(color=colorMap[techColor[tech]], label=tech) for tech in df['Technology']]
-    #colors=[colorMap[techColor[tech]] for tech in df['Technology']]
     ax.legend(handles=patches)
-
     plt.title(title)
     # manager = plt.get_current_fig_manager()
     # manager.window.showMaximized()

@@ -134,14 +134,14 @@ def toExcel(dfs, names, filename, first_lines):
 
 original_region = "NO"
 new_regions = [original_region + str(i) for i in range(1, 6)]
-insert_custom_data = 1
+insert_custom_data = 0
 
-insert_datafile = "Trade\\Modified_Needed_Norwegian_data_without_trade.xlsx"
+insert_datafile = "Modified_Hourly_Data_Europe_v05_kh_29_12_2020.xlsx" #"Modified_Needed_Norwegian_data_without_trade.xlsx"
 
 datafile = 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'  # 'Data_Europe_openENTRANCE_GradualDevelopment_oE_v05_kh_30_12_2020.xlsx'
 skip_rows = 4
 
-datafile = 'Hourly_Data_Europe_v05_kh_29_12_2020.xlsx'
+datafile = 'Hourly_Data_Europe_v06_kl_49_02_2021.xlsx'
 skip_rows = 0
 
 n = len(new_regions)
@@ -193,13 +193,13 @@ for name, sheet in cut_sheets.items():
 
         listOfPositions = getIndexes(sheet, original_region)
         ### ISOLATE NORWEGIAN DATA
-        if not insert_custom_data:
+        """ if not insert_custom_data:
             sheet = deleteNonNO(sheet, listOfPositions)
             listOfPositions = getIndexes(sheet, original_region)
             if sheet.empty:
                 continue
             datafile = 'Needed_Norwegian_data_without_trade.xlsx'
-            # datafile = 'Needed_Norwegian_data_with_trade.xlsx'
+            # datafile = 'Needed_Norwegian_data_with_trade.xlsx'"""
         ### END ISOLATING NORWEGIAN DATA
 
         if insert_custom_data and name in custom_sheets.keys():
