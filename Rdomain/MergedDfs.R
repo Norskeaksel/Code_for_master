@@ -5,7 +5,7 @@ library(reshape2)
 library(dplyr)
 library(tidyverse)
 library(knitr)
-rm(list=ls())
+#rm(list=ls())
 
 scenario="GradualDevelopment" #Only needed for testing/debugging purposes
 scenarios=c("SocietalCommitment")#, "GradualDevelopment", "SocietalCommitment", "TechnoFriendly", "DirectedTransition")#, "MiddleEarth"
@@ -14,6 +14,8 @@ technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_R
                "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
                "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
                "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
+
+technologyUses=c("HLR","Demand","FRT", "HHI", "HLI", "HMI", "PSNG", "X_Biofuel","X_Electrolysis", "X_Gasifier","X_Methanation")
 TU=F
 Signy=F
 AggrigateTechnologies=T #Should always be true because it sets adds unseen technologies with 0-values. Change technologies instead
@@ -21,11 +23,11 @@ regions=c("NO")#,"Mordor2","Mordor3","Mordor4","Mordor5")
 sep=","
 
 
-toThermal=function(df){
+toThermal=function(df,aggrigations){
   col="Technology"
   for (row in 1:nrow(df)){
     makeThermal=TRUE
-    for(tech in technologies){
+    for(tech in aggrigations){
       if(df[row,col]==tech){
         makeThermal=FALSE
         break
@@ -39,8 +41,8 @@ toThermal=function(df){
   return (df)
 }
 
-getMissingTechnologies=function(df){
-  for(tech in technologies){
+getMissingTechnologies=function(df, aggrigations){
+  for(tech in aggrigations){
     if(!any(df$Technology == tech)){
       #print(paste("missing tech ",tech))
       missingRow=df[1,]
@@ -54,15 +56,15 @@ getMissingTechnologies=function(df){
   return (df)
 }
 
-renameTechnologies=function(df){
-  for(tech in technologies){
+renameTechnologies=function(df, aggrigations){
+  for(tech in aggrigations){
     lastName=tail(strsplit(tech, " ")[[1]],1)
     regex=paste(".*",lastName,".*",sep="")
     #print(regex)
     df$Technology = sub(regex, tech, df$Technology)
   }
-  df = toThermal(df)
-  df = getMissingTechnologies(df)
+  df = toThermal(df, aggrigations)
+  df = getMissingTechnologies(df, aggrigations)
   return (df)
 }
 
@@ -143,8 +145,6 @@ mergeScenariosDf= function(scenarios,TU=F){
     Capacities=read.csv(paste(scenario,'Capacity.csv',sep=""),check.names = FALSE,sep = sep)
     Productions=read.csv(paste(scenario,'Production.csv',sep=""),check.names = FALSE, sep = sep)
     
-
-    
     Capacities$Scenario=scenario
     Productions$Scenario=scenario
     
@@ -175,8 +175,8 @@ mergeScenariosDf= function(scenarios,TU=F){
                                        #|Productions$Category=="Transportation")),]
     
     #if(AggrigateTechnologies==T){
-      CapacitiesSub=renameTechnologies(CapacitiesSub)
-      ProductionsSub=renameTechnologies(ProductionsSub)
+      CapacitiesSubAgg=renameTechnologies(CapacitiesSub, technologies)
+      ProductionsSubAgg=renameTechnologies(ProductionsSub, technologies)
     #}
     
     ProductionsUse=Productions[Productions$Type=="Use",]
@@ -184,10 +184,11 @@ mergeScenariosDf= function(scenarios,TU=F){
     Productions=Productions %>% filter_all(any_vars(. %in% c('Power')))
     PowerBalance=aggregate(.~Type+Scenario,data=Productions[,-c(1:6,8)],FUN = sum)
     PowerBalance=mutate_if(PowerBalance, is.numeric, ~. / 3.6)
-    #ProductionsUseOftechnologies = aggregate(.~Technology+Scenario,data=ProductionsUse[,c(3,10:17)],FUN = sum)
+    UseOftechnologies = aggregate(.~Technology+Scenario,data=ProductionsUse[,c(3,9:17)],FUN = sum)
+    UseOftechnologiesAgg = renameTechnologies(UseOftechnologies, technologyUses)
   
-    scenarioCapacitiesSub[[c]]=CapacitiesSub
-    scenarioProductionsSub[[c]]=ProductionsSub
+    scenarioCapacitiesSub[[c]]=CapacitiesSubAgg
+    scenarioProductionsSub[[c]]=ProductionsSubAgg
     
     scenarioProductionsUse[[c]]=ProductionsUse
     scenarioPowerBalance[[c]]=PowerBalance
@@ -197,7 +198,7 @@ mergeScenariosDf= function(scenarios,TU=F){
   mergedProductionsSubdf <- do.call(rbind, scenarioProductionsSub)
   mergedProductionsUse <- do.call(rbind, scenarioProductionsUse)
   totalPowerBalance <- do.call(rbind, scenarioPowerBalance)
-  return (list(mergedCapacitiesSubdf, mergedProductionsSubdf, mergedProductionsUse, totalPowerBalance))
+  return (list(mergedCapacitiesSubdf, mergedProductionsSubdf, mergedProductionsUse, totalPowerBalance, UseOftechnologiesAgg))
 }
 
 for(i in regions){
@@ -207,7 +208,7 @@ for(i in regions){
   mergedProductionsSubdf <- dfList[[2]]
   mergedProductionsUse <- dfList[[3]]
   totalPowerBalance <- dfList[[4]]
-  #totalProductionsUseOftechnologies <- dfList[[5]]
+  useOftechnologies <- dfList[[5]]
    
   mergedPowerCapacities=mergedCapacitiesSubdf[mergedCapacitiesSubdf$Category=="Power",]
   mergedPowerProductions=mergedProductionsSubdf[mergedProductionsSubdf$Category=="Power",]
@@ -215,6 +216,7 @@ for(i in regions){
   
   totalPowerCapacities = totals(mergedPowerCapacities[,-c(1,2,4)])
   totalPowerProductions = totals(mergedPowerProductions[,-c(1,2,4:8)],TRUE)
+  totalUseOftechnologies=totals(useOftechnologies)
   
   
   names=c("totalPowerCapacities.csv","totalPowerProductions.csv")#,"totalPowerEmissions.csv","totalPowerCosts.csv")
@@ -226,12 +228,16 @@ for(i in regions){
               ,row.names=FALSE, quote = FALSE)
     write.csv(totalPowerBalance,paste("Tables\\TUresults\\PowerBalance",region,".csv",sep=""),
               row.names=FALSE, quote = FALSE)
+    write.csv(totalUseOftechnologies,paste("Tables\\TUresults\\technologyUses",region,".csv",sep=""),
+              row.names=FALSE, quote = FALSE)
   }else if(Signy ==T){
     write.csv(totalPowerCapacities,paste("Tables\\Signy\\totalPowerCapacities",region,".csv",sep=""),
               row.names=FALSE, quote = FALSE)
     write.csv(totalPowerProductions,paste("Tables\\Signy\\totalPowerProductions",region,".csv",sep="")
               ,row.names=FALSE, quote = FALSE)
     write.csv(totalPowerBalance,paste("Tables\\Signy\\PowerBalance",region,".csv",sep=""),
+              row.names=FALSE, quote = FALSE)
+    write.csv(totalUseOftechnologies,paste("Tables\\Signy\\technologyUses",region,".csv",sep=""),
               row.names=FALSE, quote = FALSE)
   }else{
     write.csv(totalPowerCapacities,paste("Tables\\totalPowerCapacities",region,".csv",sep="")
@@ -240,22 +246,25 @@ for(i in regions){
               ,row.names=FALSE, quote = FALSE)
     write.csv(totalPowerBalance,paste("Tables\\PowerBalance",region,".csv",sep=""),
               row.names=FALSE, quote = FALSE)
+    write.csv(totalUseOftechnologies,paste("Tables\\technologyUses",region,".csv",sep=""),
+              row.names=FALSE, quote = FALSE)
 
   }
 }
 
 View(totalPowerCapacities)
-View(totalPowerProductions)
+#View(totalPowerProductions)
 #View(totalProductionsUse)
 #View(totalPowerBalance)
+View(totalUseOftechnologies)
 
-# balance=totalPowerBalance
-# balance$Type="Balance"
-# balance=aggregate(.~Scenario+Type,balance,sum)
-# totalPowerBalance=rbind(totalPowerBalance, balance)
-# totalPowerBalance$Scenario=NULL
-# plotfolder="plots\\"
-# scenario="GradualDevelopment"
-# source("PlottingFunctions.R")
-# plotCategories(totalPowerBalance,totalPowerBalance$Type, "Power Balance", "TWh","Type")
+balance=totalPowerBalance
+balance$Type="Balance"
+balance=aggregate(.~Scenario+Type,balance,sum)
+totalPowerBalance=rbind(totalPowerBalance, balance)
+totalPowerBalance$Scenario=NULL
+plotfolder="plots\\"
+scenario="GradualDevelopment"
+source("PlottingFunctions.R")
+plotCategories(totalPowerBalance,totalPowerBalance$Type, "Power Balance", "TWh","Type")
 

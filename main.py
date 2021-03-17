@@ -83,17 +83,27 @@ i=""
 #NO_DT_PB = [pd.read_csv("Rdomain\\Tables\\" + Alltech + "DT\\PowerBalanceNO" + str(i) + ".csv").rename(
 #    columns={"Type": "Technology"})#.apply(lambda x: x.abs() if np.issubdtype(x.dtype, np.number) else x)
 #            ]for i in range(1, 6)]
+
+# read technologyUses
+i=""
+NO_SC_use = [pd.read_csv("Rdomain\\Tables\\" + Alltech + "SC\\technologyUsesNO" + str(i) + ".csv") for _ in range(1,2)]
+numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
+df=NO_SC_use[0]
+for c in [c for c in df.columns if df[c].dtype in numerics]:
+    df[c] = df[c].abs()
+NO_SC_use[0]=df
 # plotDfs(NO_DT_PB, "Power Balance [Twh] Directed Transition",False)
 
 #plotDfs([TF_NO1C,TF_NO2C], "TF region Capacities", False)
-plotDfs([DTC, TU_DTC], "Power Capacities [GW] Directed Transition Gams 34 vs TU" ,False)
-plotDfs([DTP, TU_DTP], "Power Productions [TWh] Directed Transition Gams 34 vs TU",False)
-plotDfs([GDC, TU_GDC], "GradualDevelopment Power Capacities [GW] Gams 34 vs TU", False)
-plotDfs([GDP, TU_GDP], "GradualDevelopment Power Productions [TWh] Gams 34 vs TU", False)
-plotDfs([TFC, TU_TFC], "TechnoFriendly Power Capacities [GW] Gams 34 vs TU", False)
-plotDfs([TFP, TU_TFP], "TechnoFriendly Power Productions [TWh] Gams 34 vs TU", False)
-plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
-plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
+#plotDfs([DTC, TU_DTC], "Power Capacities [GW] Directed Transition Gams 34 vs TU" ,False)
+#plotDfs([DTP, TU_DTP], "Power Productions [TWh] Directed Transition Gams 34 vs TU",False)
+#plotDfs([GDC, TU_GDC], "GradualDevelopment Power Capacities [GW] Gams 34 vs TU", False)
+#plotDfs([GDP, TU_GDP], "GradualDevelopment Power Productions [TWh] Gams 34 vs TU", False)
+#plotDfs([TFC, TU_TFC], "TechnoFriendly Power Capacities [GW] Gams 34 vs TU", False)
+#plotDfs([TFP, TU_TFP], "TechnoFriendly Power Productions [TWh] Gams 34 vs TU", False)
+#plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
+#plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
+plotDfs(NO_SC_use, "SocietalCommitment Technology Use", False)
 
 #plotDfs([Si_TFC, TU_GDC_Old], "GradualDevelopment Power Capacities [GW] Signy vs TU", False)
 #plotDfs([Si_TFP, TU_GDP_Old], "GradualDevelopment Power Productions [TWh] Signy vs TU", False)
