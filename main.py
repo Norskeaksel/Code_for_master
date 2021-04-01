@@ -91,7 +91,7 @@ numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
 df=NO_SC_use[0]
 for c in [c for c in df.columns if df[c].dtype in numerics]:
     df[c] = df[c].abs()
-NO_SC_use[0]=df
+NO_SC_use=df
 # plotDfs(NO_DT_PB, "Power Balance [Twh] Directed Transition",False)
 
 #plotDfs([TF_NO1C,TF_NO2C], "TF region Capacities", False)
@@ -101,9 +101,9 @@ NO_SC_use[0]=df
 #plotDfs([GDP, TU_GDP], "GradualDevelopment Power Productions [TWh] Gams 34 vs TU", False)
 #plotDfs([TFC, TU_TFC], "TechnoFriendly Power Capacities [GW] Gams 34 vs TU", False)
 #plotDfs([TFP, TU_TFP], "TechnoFriendly Power Productions [TWh] Gams 34 vs TU", False)
-#plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
+plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
 #plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
-plotDfs(NO_SC_use, "SocietalCommitment Technology Use", False)
+#plotDfs([NO_SC_use], "SocietalCommitment Technology Power Use", False)
 
 #plotDfs([Si_TFC, TU_GDC_Old], "GradualDevelopment Power Capacities [GW] Signy vs TU", False)
 #plotDfs([Si_TFP, TU_GDP_Old], "GradualDevelopment Power Productions [TWh] Signy vs TU", False)

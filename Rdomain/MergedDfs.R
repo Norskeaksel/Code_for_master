@@ -5,21 +5,26 @@ library(reshape2)
 library(dplyr)
 library(tidyverse)
 library(knitr)
-#rm(list=ls())
+rm(list=ls())
 
-scenario="GradualDevelopment" #Only needed for testing/debugging purposes
-scenarios=c("SocietalCommitment")#, "GradualDevelopment", "SocietalCommitment", "TechnoFriendly", "DirectedTransition")#, "MiddleEarth"
-technologies=c("PV","Hydro","Wind Onshore","Wind Offshore Deep","Wind Offshore Transitional") #All others are set to thermal
-technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_Rooftop_Commercial",
+scenario="SocietalCommitment" #Only needed for testing/debugging purposes
+scenarios=c("GradualDevelopment")#, "GradualDevelopment", "SocietalCommitment", "TechnoFriendly", "DirectedTransition")#, "MiddleEarth"
+technologies=c("PV","Hydro","Wind Onshore","Wind Offshore")# Deep","Wind Offshore Transitional" #All others are set to thermal
+#technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_Rooftop_Commercial",
                "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
                "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
                "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
 
-technologyUses=c("HLR","Demand","FRT", "HHI", "HLI", "HMI", "PSNG", "X_Biofuel","X_Electrolysis", "X_Gasifier","X_Methanation")
+technologyUses=c("HLR","Demand","FRT", "HHI", "HLI", "HMI", "PSNG", "X_Electrolysis")#,"X_Biofuel", "X_Gasifier","X_Methanation")
+h2=c("H2")
 TU=F
 Signy=F
 AggrigateTechnologies=T #Should always be true because it sets adds unseen technologies with 0-values. Change technologies instead
 regions=c("NO")#,"Mordor2","Mordor3","Mordor4","Mordor5")
+Allregions=read.csv("AllRegionsNO1_5.csv")
+regions<- as.vector(unique(Allregions$AllNations))
+
+
 sep=","
 
 
@@ -34,8 +39,8 @@ toThermal=function(df,aggrigations){
       }
     }
     if(makeThermal){
-      print(paste("Make Other: ",df[row,col]))
-      df[row,col] = "Other"
+      #print(paste("Make Other: ",df[row,col]))
+      df[row,col] = "Thermal"#"Other"
     }
   }
   return (df)
@@ -176,21 +181,27 @@ mergeScenariosDf= function(scenarios,TU=F){
     
     #if(AggrigateTechnologies==T){
       CapacitiesSubAgg=renameTechnologies(CapacitiesSub, technologies)
-      ProductionsSubAgg=renameTechnologies(ProductionsSub, technologies)
+      ProductionsSubAgg=renameTechnologies(Productions, technologies)
     #}
-    
+    hydrogenData=renameTechnologies(Productions, h2)
+      
     ProductionsUse=Productions[Productions$Type=="Use",]
+    ProductionsPowerUse = ProductionsUse %>% filter_all(any_vars(. %in% c('Power')))
     years=str(seq(2015,2050,5))
     Productions=Productions %>% filter_all(any_vars(. %in% c('Power')))
     PowerBalance=aggregate(.~Type+Scenario,data=Productions[,-c(1:6,8)],FUN = sum)
     PowerBalance=mutate_if(PowerBalance, is.numeric, ~. / 3.6)
-    UseOftechnologies = aggregate(.~Technology+Scenario,data=ProductionsUse[,c(3,9:17)],FUN = sum)
+    
+    UseOftechnologies = aggregate(.~Technology+Scenario,data=ProductionsPowerUse[,c(3,9:17)],FUN = sum)
+    UseOftechnologies=mutate_if(UseOftechnologies, is.numeric, ~. / 3.6)
     UseOftechnologiesAgg = renameTechnologies(UseOftechnologies, technologyUses)
   
+    #hydrogenData=aggregate(.~Technology+Scenario+Type,data=hydrogenData[,c(3,9:17)],FUN = sum)
+    
     scenarioCapacitiesSub[[c]]=CapacitiesSubAgg
     scenarioProductionsSub[[c]]=ProductionsSubAgg
     
-    scenarioProductionsUse[[c]]=ProductionsUse
+    scenarioProductionsUse[[c]]=ProductionsPowerUse
     scenarioPowerBalance[[c]]=PowerBalance
     
   }
@@ -242,20 +253,20 @@ for(i in regions){
   }else{
     write.csv(totalPowerCapacities,paste("Tables\\totalPowerCapacities",region,".csv",sep="")
               ,row.names=FALSE, quote = FALSE)
-    write.csv(totalPowerProductions,paste("Tables\\totalPowerProductions",region,".csv",sep="")
-              ,row.names=FALSE, quote = FALSE)
-    write.csv(totalPowerBalance,paste("Tables\\PowerBalance",region,".csv",sep=""),
-              row.names=FALSE, quote = FALSE)
-    write.csv(totalUseOftechnologies,paste("Tables\\technologyUses",region,".csv",sep=""),
-              row.names=FALSE, quote = FALSE)
+    # write.csv(totalPowerProductions,paste("Tables\\totalPowerProductions",region,".csv",sep="")
+    #           ,row.names=FALSE, quote = FALSE)
+    # write.csv(totalPowerBalance,paste("Tables\\PowerBalance",region,".csv",sep=""),
+    #           row.names=FALSE, quote = FALSE)
+    # write.csv(totalUseOftechnologies,paste("Tables\\technologyUses",region,".csv",sep=""),
+    #           row.names=FALSE, quote = FALSE)
 
   }
 }
 
 View(totalPowerCapacities)
-#View(totalPowerProductions)
+View(totalPowerProductions)
 #View(totalProductionsUse)
-#View(totalPowerBalance)
+View(totalPowerBalance)
 View(totalUseOftechnologies)
 
 balance=totalPowerBalance
