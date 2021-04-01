@@ -12,7 +12,7 @@ import urllib.request
 import fiona
 import matplotlib.pyplot as plt
 from collections import defaultdict
-import mapConfiguration
+import capacityConfiguration
 
 replaceNorwayWithRegions=True
 dirName= "totalPowerCapacities"
@@ -90,5 +90,5 @@ def mapData(csvDir,mType,scenario="Gradudal Development"):
   newWorld["Value Type"]=mType
   crs = {'init': 'epsg:4326'}
   newWorld=gpd.GeoDataFrame(newWorld, crs=crs, geometry='geometry')
-  newWorld.to_csv("mapData\\"+scenario+" "+mType+".csv")
   return newWorld
+
