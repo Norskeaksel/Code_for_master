@@ -7,13 +7,13 @@ library(tidyverse)
 library(knitr)
 rm(list=ls())
 
-scenario="SocietalCommitment" #Only needed for testing/debugging purposes
+scenario="GradualDevelopment" #Only needed for testing/debugging purposes
 scenarios=c("GradualDevelopment")#, "GradualDevelopment", "SocietalCommitment", "TechnoFriendly", "DirectedTransition")#, "MiddleEarth"
 technologies=c("PV","Hydro","Wind Onshore","Wind Offshore")# Deep","Wind Offshore Transitional" #All others are set to thermal
 #technologies=c("P_Biomass","P_Gas","RES_Hydro_Large","RES_Hydro_Small","RES_PV_Rooftop_Commercial",
-               "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
-               "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
-               "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
+#               "RES_PV_Rooftop_Residential","RES_PV_Utility_Avg","RES_PV_Utility_Inf","RES_PV_Utility_Opt",
+#               "RES_Wind_Offshore_Deep","RES_Wind_Offshore_Transitional","RES_Wind_Offshore_Deep",
+#               "RES_Wind_Onshore_Avg","RES_Wind_Onshore_Opt","HLI_Biomass_CHP_CCS")
 
 technologyUses=c("HLR","Demand","FRT", "HHI", "HLI", "HMI", "PSNG", "X_Electrolysis")#,"X_Biofuel", "X_Gasifier","X_Methanation")
 h2=c("H2")
@@ -181,7 +181,7 @@ mergeScenariosDf= function(scenarios,TU=F){
     
     #if(AggrigateTechnologies==T){
       CapacitiesSubAgg=renameTechnologies(CapacitiesSub, technologies)
-      ProductionsSubAgg=renameTechnologies(Productions, technologies)
+      ProductionsSubAgg=renameTechnologies(ProductionsSub, technologies)
     #}
     hydrogenData=renameTechnologies(Productions, h2)
       
@@ -253,8 +253,8 @@ for(i in regions){
   }else{
     write.csv(totalPowerCapacities,paste("Tables\\totalPowerCapacities",region,".csv",sep="")
               ,row.names=FALSE, quote = FALSE)
-    # write.csv(totalPowerProductions,paste("Tables\\totalPowerProductions",region,".csv",sep="")
-    #           ,row.names=FALSE, quote = FALSE)
+    write.csv(totalPowerProductions,paste("Tables\\totalPowerProductions",region,".csv",sep="")
+               ,row.names=FALSE, quote = FALSE)
     # write.csv(totalPowerBalance,paste("Tables\\PowerBalance",region,".csv",sep=""),
     #           row.names=FALSE, quote = FALSE)
     # write.csv(totalUseOftechnologies,paste("Tables\\technologyUses",region,".csv",sep=""),
