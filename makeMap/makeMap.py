@@ -12,32 +12,26 @@ import urllib.request
 import fiona
 import matplotlib.pyplot as plt
 from collections import defaultdict
-import capacityConfiguration
 
 replaceNorwayWithRegions=True
-dirName= "totalPowerCapacities"
-mType="Power Capacity [GW]"
-csvDir="totalPowerCapacities"
-
-
 def mapData(csvDir,mType,scenario="Gradudal Development"):
   os.chdir(csvDir)
   extension = 'csv'
-  try:
-      combined_df = pd.read_csv("Combined.csv")
-  except:
-      all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
-      dfs=[]
-      for f in all_filenames:
-          df=pd.read_csv(f)
-          if f[-5].isnumeric():
-              df["Region"]=f[-7:-4]
-          else:
-              df["Region"]=f[-6:-4]
+  #try:
+  #    combined_df = pd.read_csv("Combined.csv")
+  #except:
+  all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
+  dfs=[]
+  for f in all_filenames:
+      df=pd.read_csv(f)
+      if f[-5].isnumeric():
+          df["Region"]=f[-7:-4]
+      else:
+          df["Region"]=f[-6:-4]
 
-          dfs.append(df)
-          combined_df = pd.concat(dfs)
-          combined_df.to_csv( "Combined.csv", index=False, encoding='utf-8-sig')
+      dfs.append(df)
+  combined_df = pd.concat(dfs)
+  combined_df.to_csv( "Combined.csv", index=False, encoding='utf-8-sig')
 
   os.chdir('..')
   combined_df["2054"]=combined_df["2050"]
@@ -86,9 +80,11 @@ def mapData(csvDir,mType,scenario="Gradudal Development"):
       world=world.append(priceRegions, ignore_index = True)
 
   newWorld = world.merge(techPivoted, on='Region', how='left').dropna()
+  newWorld = newWorld.round(2)
   newWorld=newWorld.rename(columns={"CNTRY_NAME":"Country"})
   newWorld["Value Type"]=mType
   crs = {'init': 'epsg:4326'}
   newWorld=gpd.GeoDataFrame(newWorld, crs=crs, geometry='geometry')
+  os.chdir('..')
   return newWorld
 
