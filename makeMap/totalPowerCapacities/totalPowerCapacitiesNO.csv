@@ -1,0 +1,9 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.000
+SocietalCommitment_globalLimit,Hydro,31.00,31.00,31.00,31.00,31.00,31.00,31.00,31.000
+SocietalCommitment_globalLimit,PV Rooftop, 0.00, 0.00, 0.00, 0.00, 5.37, 5.37, 6.07, 7.558
+SocietalCommitment_globalLimit,PV Utility, 0.00, 0.00, 0.00, 0.00, 2.60, 3.80, 5.20, 5.200
+SocietalCommitment_globalLimit,Thermal, 1.75, 1.61, 1.46, 1.34, 1.28, 1.13, 1.13, 0.079
+SocietalCommitment_globalLimit,Wind Offshore, 0.00, 0.00, 0.00, 0.00, 7.10, 7.14, 7.14, 7.137
+SocietalCommitment_globalLimit,Wind Onshore, 1.20, 8.18,15.14,18.56,18.40,17.77,17.00,16.465
+SocietalCommitment_globalLimit,Sum,33.95,40.79,47.60,50.91,65.75,66.20,67.54,67.439

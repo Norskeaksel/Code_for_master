@@ -176,6 +176,10 @@ c={
                 "format": None
               },
               {
+                "name": "Sum",
+                "format": None
+              },
+              {
                 "name": "Percent Renawable",
                 "format": None
               }

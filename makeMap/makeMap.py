@@ -13,25 +13,24 @@ import fiona
 import matplotlib.pyplot as plt
 from collections import defaultdict
 
-replaceNorwayWithRegions=True
+replaceNorwayWithRegions=False
 def mapData(csvDir,mType,scenario="Gradudal Development"):
   os.chdir(csvDir)
   extension = 'csv'
-  #try:
-  #    combined_df = pd.read_csv("Combined.csv")
-  #except:
   all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
   dfs=[]
   for f in all_filenames:
-      df=pd.read_csv(f)
-      if f[-5].isnumeric():
-          df["Region"]=f[-7:-4]
-      else:
-          df["Region"]=f[-6:-4]
+      if f!="Combined.csv":
+          df=pd.read_csv(f)
+          if f[-5].isnumeric():
+              df["Region"]=f[-7:-4]
+          else:
+              df["Region"]=f[-6:-4]
 
-      dfs.append(df)
+          dfs.append(df)
+
   combined_df = pd.concat(dfs)
-  combined_df.to_csv( "Combined.csv", index=False, encoding='utf-8-sig')
+  combined_df.to_csv("Combined.csv", index=False, encoding='utf-8-sig')
 
   os.chdir('..')
   combined_df["2054"]=combined_df["2050"]

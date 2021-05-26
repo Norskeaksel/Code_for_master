@@ -1,0 +1,7 @@
+Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
+GradualDevelopment,Hydro,3.498,3.581,3.58, 3.58, 3.58, 3.58, 3.581, 3.581
+GradualDevelopment,PV,0.106,0.106,0.60, 1.48, 2.24, 3.91, 3.924, 3.924
+GradualDevelopment,Thermal,0.822,0.722,4.43, 3.83, 3.16, 0.08, 0.068, 0.067
+GradualDevelopment,Wind Offshore,0.000,0.000,0.00, 0.00, 0.00, 0.00, 0.000, 0.000
+GradualDevelopment,Wind Onshore,0.099,0.099,0.85, 2.15, 2.74, 2.74, 2.743, 2.743
+GradualDevelopment,Sum,4.526,4.508,9.46,11.05,11.72,10.32,10.316,10.315

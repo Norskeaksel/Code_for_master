@@ -1,205 +1,241 @@
 ﻿Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050,Region
-GradualDevelopment,Hydro,22.68,46.83,46.83,46.83,46.83,46.83,46.83,46.83,AT
-GradualDevelopment,PV,0.97,0.97,8.62,13.98,17.2,23.03,28.44,28.73,AT
-GradualDevelopment,Thermal,15.1,11.47,5.63,5.04,2.61,2.22,1.89,1.6,AT
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,AT
-GradualDevelopment,Wind Onshore,4.61,4.61,25.59,38.69,47.2,48.0,56.98,56.98,AT
-GradualDevelopment,Sum,43.36,63.88,86.67,104.53,113.83,120.07,134.14,134.14,AT
-GradualDevelopment,Hydro,4.07,4.07,4.07,4.04,4.01,4.01,4.01,4.01,BE
-GradualDevelopment,PV,2.58,2.58,4.87,11.57,20.07,35.36,40.05,40.05,BE
-GradualDevelopment,Thermal,52.66,61.67,44.27,32.03,23.99,3.39,2.84,8.56,BE
-GradualDevelopment,Wind Offshore,2.15,2.15,2.15,2.15,1.83,8.83,8.83,8.83,BE
-GradualDevelopment,Wind Onshore,2.49,2.49,11.2,26.55,31.42,36.66,39.66,39.66,BE
-GradualDevelopment,Sum,63.94,72.96,66.55,76.35,81.32,88.25,95.39,101.11,BE
-GradualDevelopment,Hydro,2.54,9.27,9.25,13.61,13.59,13.58,13.56,13.46,BG
-GradualDevelopment,PV,1.35,1.35,6.25,10.11,11.08,13.96,18.76,18.87,BG
-GradualDevelopment,Thermal,31.37,33.58,28.65,36.69,68.63,59.94,51.25,49.98,BG
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,BG
-GradualDevelopment,Wind Onshore,1.2,1.2,1.2,1.2,1.02,0.86,0.86,0.86,BG
-GradualDevelopment,Sum,36.45,45.4,45.34,61.6,94.32,88.34,84.43,83.18,BG
-GradualDevelopment,Hydro,41.393,42.359,42.359,42.359,42.359,42.36,42.36,42.36,CH
-GradualDevelopment,PV,1.147,1.147,10.901,19.592,23.299,28.86,28.86,29.01,CH
-GradualDevelopment,Thermal,21.252,25.768,20.891,12.332,2.029,1.18,1.0,0.85,CH
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,CH
-GradualDevelopment,Wind Onshore,0.089,0.089,0.088,0.081,0.069,4.66,9.86,9.86,CH
-GradualDevelopment,Sum,63.88,69.363,74.238,74.364,67.756,77.05,82.07,82.07,CH
-GradualDevelopment,Hydro,5.43,6.07,6.06,6.06,6.03,6.0,5.99,5.98,CZ
-GradualDevelopment,PV,2.16,2.16,5.66,6.61,10.97,22.51,26.36,26.63,CZ
-GradualDevelopment,Thermal,62.24,66.14,62.76,91.06,144.41,132.42,132.11,130.59,CZ
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,CZ
-GradualDevelopment,Wind Onshore,0.68,0.68,0.68,0.63,0.53,0.45,0.84,0.84,CZ
-GradualDevelopment,Sum,70.51,75.04,75.17,104.35,161.95,161.38,165.31,164.04,CZ
-GradualDevelopment,Hydro,16.77,49.73,49.73,57.41,59.33,59.33,59.33,59.33,DE
-GradualDevelopment,PV,34.4,34.4,59.27,103.83,150.19,200.84,232.79,232.79,DE
-GradualDevelopment,Thermal,383.38,334.26,182.96,75.01,47.37,23.77,20.21,22.95,DE
-GradualDevelopment,Wind Offshore,15.86,15.86,15.86,14.87,57.78,248.95,385.44,391.42,DE
-GradualDevelopment,Wind Onshore,82.25,82.25,200.89,363.07,459.12,471.53,471.53,468.59,DE
-GradualDevelopment,Sum,532.66,516.5,508.73,614.19,773.79,1004.43,1169.3,1175.08,DE
-GradualDevelopment,Hydro,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,DK
-GradualDevelopment,PV,0.63,0.63,2.06,5.96,11.63,14.42,14.83,15.16,DK
-GradualDevelopment,Thermal,11.21,10.12,14.37,5.84,3.63,2.06,1.75,1.5,DK
-GradualDevelopment,Wind Offshore,4.69,4.69,4.54,3.86,3.28,2.79,2.79,3.16,DK
-GradualDevelopment,Wind Onshore,5.52,5.52,21.97,37.7,37.5,37.45,37.45,37.02,DK
-GradualDevelopment,Sum,22.04,20.96,42.94,53.36,56.04,56.72,56.83,56.84,DK
-GradualDevelopment,Hydro,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,EE
-GradualDevelopment,PV,0.0,0.0,0.0,0.55,1.58,2.11,2.17,2.31,EE
-GradualDevelopment,Thermal,7.02,6.07,0.6,0.51,0.44,0.37,0.32,0.27,EE
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,2.46,3.89,6.18,6.85,EE
-GradualDevelopment,Wind Onshore,0.68,0.68,4.18,5.68,5.59,5.52,5.52,4.75,EE
-GradualDevelopment,Sum,7.7,6.75,4.78,6.75,10.07,11.89,14.18,14.18,EE
-GradualDevelopment,Hydro,56.51,56.51,61.57,88.06,91.85,91.56,89.24,90.33,ES
-GradualDevelopment,PV,5.91,24.03,83.79,187.17,247.59,338.65,392.53,392.53,ES
-GradualDevelopment,Thermal,189.86,172.57,135.8,69.83,30.26,3.48,2.96,5.38,ES
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,ES
-GradualDevelopment,Wind Onshore,47.25,47.25,135.76,324.9,420.38,559.26,572.64,571.99,ES
-GradualDevelopment,Sum,299.54,300.36,416.92,669.96,790.08,992.95,1057.36,1060.23,ES
-GradualDevelopment,Hydro,5.844,13.643,13.64,19.335,24.13,23.28,23.6,22.52,FI
-GradualDevelopment,PV,0.059,0.059,0.05,0.042,4.9,9.77,10.82,14.95,FI
-GradualDevelopment,Thermal,38.793,40.201,31.39,35.147,36.83,36.0,35.29,34.69,FI
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,FI
-GradualDevelopment,Wind Onshore,1.924,1.924,25.43,43.443,59.41,76.07,77.01,74.56,FI
-GradualDevelopment,Sum,46.619,55.826,70.52,97.967,125.27,145.12,146.72,146.72,FI
-GradualDevelopment,Hydro,75.72,75.72,77.76,77.76,77.76,77.76,77.76,77.76,FR
-GradualDevelopment,PV,5.74,5.74,45.73,48.75,106.62,166.97,235.27,235.27,FR
-GradualDevelopment,Thermal,498.11,543.18,521.67,659.74,819.73,690.69,648.67,599.3,FR
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,2.97,46.57,FR
-GradualDevelopment,Wind Onshore,15.83,15.83,116.23,114.33,112.26,278.55,327.71,284.7,FR
-GradualDevelopment,Sum,595.39,640.47,761.39,900.59,1116.38,1213.98,1292.39,1243.6,FR
-GradualDevelopment,Hydro,9.74,9.74,9.74,9.72,9.72,9.74,9.72,9.74,GR
-GradualDevelopment,PV,3.7,13.63,17.09,29.07,62.7,81.33,94.11,109.66,GR
-GradualDevelopment,Thermal,34.39,29.27,33.0,23.61,10.16,0.14,0.12,0.55,GR
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,17.85,62.14,62.14,GR
-GradualDevelopment,Wind Onshore,3.87,4.58,29.89,53.83,106.03,105.69,105.38,89.83,GR
-GradualDevelopment,Sum,51.69,57.22,89.72,116.23,188.61,214.74,271.48,271.93,GR
-GradualDevelopment,Hydro,8.72,8.72,11.42,14.99,14.81,14.81,14.809,14.81,HR
-GradualDevelopment,PV,0.0,0.0,3.13,4.98,6.27,7.78,9.093,9.11,HR
-GradualDevelopment,Thermal,3.17,2.73,3.86,0.34,0.13,0.11,0.094,0.08,HR
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,HR
-GradualDevelopment,Wind Onshore,0.37,0.37,0.37,0.33,0.28,0.24,0.241,0.24,HR
-GradualDevelopment,Sum,12.26,11.82,18.79,20.64,21.49,22.94,24.237,24.24,HR
-GradualDevelopment,Hydro,0.248,0.248,0.34,0.43,0.43,0.43,0.41,0.41,HU
-GradualDevelopment,PV,0.032,0.032,6.04,11.44,12.04,17.13,22.23,26.44,HU
-GradualDevelopment,Thermal,23.449,24.359,34.28,41.69,78.68,71.05,70.88,67.3,HU
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,HU
-GradualDevelopment,Wind Onshore,0.545,0.545,6.4,6.36,6.29,14.59,41.4,37.33,HU
-GradualDevelopment,Sum,24.274,25.185,47.06,59.93,97.44,103.2,134.93,131.48,HU
-GradualDevelopment,Hydro,1.44,1.44,1.35,1.33,1.27,1.27,1.21,1.16,IE
-GradualDevelopment,PV,0.0,0.0,0.0,0.0,0.0,2.95,6.38,9.8,IE
-GradualDevelopment,Thermal,21.07,17.99,10.65,7.11,3.17,0.29,0.25,0.22,IE
-GradualDevelopment,Wind Offshore,0.12,0.12,0.12,0.1,164.36,328.52,328.52,328.52,IE
-GradualDevelopment,Wind Onshore,5.6,7.45,30.49,61.57,67.36,66.81,66.79,63.46,IE
-GradualDevelopment,Sum,28.23,27.0,42.61,70.11,236.16,399.83,403.15,403.16,IE
-GradualDevelopment,Hydro,43.66,68.04,68.04,68.04,66.16,68.04,68.04,68.04,IT
-GradualDevelopment,PV,18.56,18.56,60.87,88.34,128.82,187.19,189.78,190.55,IT
-GradualDevelopment,Thermal,144.33,124.42,116.69,130.39,143.25,6.06,5.15,18.05,IT
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,IT
-GradualDevelopment,Wind Onshore,14.24,14.24,13.63,11.58,39.93,110.0,110.0,110.0,IT
-GradualDevelopment,Sum,220.79,225.26,259.23,298.35,378.15,371.29,372.97,386.64,IT
-GradualDevelopment,Hydro,2.875,2.875,2.875,2.87,2.87,2.87,2.87,2.87,LT
-GradualDevelopment,PV,0.062,0.062,0.062,3.0,5.45,8.73,9.36,9.96,LT
-GradualDevelopment,Thermal,2.209,1.938,3.081,1.78,0.25,0.21,0.18,0.15,LT
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,6.77,7.67,7.67,LT
-GradualDevelopment,Wind Onshore,0.81,0.81,1.383,6.08,7.97,11.58,11.58,11.0,LT
-GradualDevelopment,Sum,5.954,5.684,7.4,13.72,16.54,30.15,31.66,31.66,LT
-GradualDevelopment,Hydro,3.498,3.581,3.58,3.58,3.58,3.58,3.581,3.581,LU
-GradualDevelopment,PV,0.106,0.106,0.6,1.48,2.24,3.91,3.924,3.924,LU
-GradualDevelopment,Thermal,0.822,0.722,4.43,3.83,3.16,0.08,0.068,0.067,LU
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LU
-GradualDevelopment,Wind Onshore,0.099,0.099,0.85,2.15,2.74,2.74,2.743,2.743,LU
-GradualDevelopment,Sum,4.526,4.508,9.46,11.05,11.72,10.32,10.316,10.315,LU
-GradualDevelopment,Hydro,3.05,5.89,6.04,9.04,9.04,8.94,8.89,8.94,LV
-GradualDevelopment,PV,0.0,0.0,0.0,1.46,2.43,6.99,12.73,12.73,LV
-GradualDevelopment,Thermal,2.82,2.49,6.32,0.44,0.38,0.32,0.27,0.23,LV
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,2.2,12.39,26.07,26.07,LV
-GradualDevelopment,Wind Onshore,0.2,0.2,0.18,0.16,0.14,0.14,0.14,0.14,LV
-GradualDevelopment,Sum,6.07,8.58,12.55,11.1,14.18,28.78,48.11,48.11,LV
-GradualDevelopment,Hydro,0.0,0.097,0.17,0.24,0.24,0.24,0.24,0.24,NL
-GradualDevelopment,PV,1.1,1.1,9.43,23.8,36.43,50.16,50.46,51.7,NL
-GradualDevelopment,Thermal,81.18,70.854,75.77,92.88,52.33,2.74,2.33,11.86,NL
-GradualDevelopment,Wind Offshore,1.34,1.34,1.25,1.25,36.0,131.86,153.2,155.45,NL
-GradualDevelopment,Wind Onshore,4.47,4.466,14.52,24.41,23.89,23.46,23.46,20.31,NL
-GradualDevelopment,Sum,88.09,77.858,101.14,142.58,148.9,208.46,229.68,239.56,NL
-GradualDevelopment,Hydro,15.04,15.04,15.04,15.045,15.045,15.045,15.0446,15.0446,NO1
-GradualDevelopment,PV,0.0,0.0,0.42,1.61,2.387,3.826,3.828,3.828,NO1
-GradualDevelopment,Thermal,0.14,0.12,0.55,0.016,0.013,0.011,0.0097,0.0097,NO1
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,NO1
-GradualDevelopment,Wind Onshore,0.4,0.4,4.56,9.125,9.125,9.125,9.1253,9.1253,NO1
-GradualDevelopment,Sum,15.58,15.57,20.57,25.796,26.57,28.008,28.0076,28.0076,NO1
-GradualDevelopment,Hydro,32.48,35.55,35.55,35.555,35.55,35.555,35.55,35.555,NO2
-GradualDevelopment,PV,0.0,0.0,0.4,1.525,2.25,3.702,3.7,3.702,NO2
-GradualDevelopment,Thermal,0.72,0.63,2.85,0.082,0.07,0.059,0.05,0.043,NO2
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,24.338,24.83,24.842,NO2
-GradualDevelopment,Wind Onshore,2.47,2.47,4.86,8.595,8.6,8.022,7.54,7.535,NO2
-GradualDevelopment,Sum,35.67,38.65,43.66,45.757,46.47,71.676,71.68,71.676,NO2
-GradualDevelopment,Hydro,16.57,16.57,16.57,16.574,16.57,16.574,16.574,16.574,NO3
-GradualDevelopment,PV,0.0,0.0,0.0,0.0,0.98,2.393,2.799,2.859,NO3
-GradualDevelopment,Thermal,0.82,0.72,0.11,0.094,0.08,0.068,0.058,0.049,NO3
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,NO3
-GradualDevelopment,Wind Onshore,3.43,3.43,7.11,10.453,10.32,10.219,9.823,9.771,NO3
-GradualDevelopment,Sum,20.82,20.72,23.79,27.121,27.95,29.254,29.254,29.254,NO3
-GradualDevelopment,Hydro,12.69,16.4,16.401,16.401,16.401,16.4,16.401,16.401,NO4
-GradualDevelopment,PV,0.0,0.0,0.0,0.0,0.0,1.58,2.911,3.164,NO4
-GradualDevelopment,Thermal,0.48,0.42,0.065,0.055,0.047,0.04,0.034,0.029,NO4
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,NO4
-GradualDevelopment,Wind Onshore,1.33,1.33,7.78,13.097,14.059,14.6,14.456,14.208,NO4
-GradualDevelopment,Sum,14.5,18.15,24.245,29.553,30.506,32.62,33.802,33.802,NO4
-GradualDevelopment,Hydro,24.89,24.89,24.89,24.894,24.894,24.894,24.89,24.894,NO5
-GradualDevelopment,PV,0.0,0.0,0.0,0.174,0.656,0.964,0.96,0.964,NO5
-GradualDevelopment,Thermal,0.43,0.37,1.7,0.049,0.042,0.035,0.03,0.026,NO5
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.073,13.703,13.71,13.997,NO5
-GradualDevelopment,Wind Onshore,0.0,0.0,2.13,4.269,4.269,4.269,4.27,3.984,NO5
-GradualDevelopment,Sum,25.32,25.27,28.73,29.386,29.934,43.866,43.87,43.866,NO5
-GradualDevelopment,Hydro,12.746,26.44,26.44,29.77,29.77,29.77,29.77,29.77,an
-GradualDevelopment,PV,0.021,0.021,14.21,14.48,30.93,71.95,93.38,97.75,an
-GradualDevelopment,Thermal,38.478,32.707,22.85,8.55,9.43,9.43,9.43,9.43,an
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,an
-GradualDevelopment,Wind Onshore,5.934,5.934,10.31,23.45,35.41,112.85,137.53,133.15,an
-GradualDevelopment,Sum,57.179,65.102,73.81,76.25,105.53,224.0,270.11,270.11,an
-GradualDevelopment,Hydro,8.921,8.921,8.84,8.79,8.77,8.6,8.49,8.49,PL
-GradualDevelopment,PV,0.022,0.022,12.41,43.08,70.37,100.25,130.15,130.83,PL
-GradualDevelopment,Thermal,154.445,132.809,129.84,104.1,75.22,5.33,4.53,23.11,PL
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,PL
-GradualDevelopment,Wind Onshore,8.028,33.322,57.47,78.78,120.87,171.02,170.17,170.17,PL
-GradualDevelopment,Sum,171.417,175.075,208.56,234.74,275.23,285.2,313.33,332.6,PL
-GradualDevelopment,Hydro,24.1,24.1,33.76,46.1,48.91,48.84,47.64,48.48,PT
-GradualDevelopment,PV,11.74,11.74,19.69,29.4,34.94,53.53,59.39,59.88,PT
-GradualDevelopment,Thermal,23.95,20.7,16.67,2.8,1.38,1.17,1.0,1.52,PT
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,PT
-GradualDevelopment,Wind Onshore,10.66,11.88,40.29,68.56,67.22,89.9,89.89,88.71,PT
-GradualDevelopment,Sum,70.46,68.42,110.4,146.86,152.45,193.45,197.91,198.59,PT
-GradualDevelopment,Hydro,16.02,22.51,28.03,40.0,40.0,39.99,39.99,39.99,RO
-GradualDevelopment,PV,2.08,2.08,9.78,10.55,28.99,63.63,101.38,101.53,RO
-GradualDevelopment,Thermal,33.29,30.69,35.87,42.86,82.22,82.19,82.16,76.52,RO
-GradualDevelopment,Wind Offshore,1.61,1.61,1.37,1.16,0.99,0.89,0.89,0.75,RO
-GradualDevelopment,Wind Onshore,5.34,5.34,5.34,5.34,4.53,3.85,7.96,7.96,RO
-GradualDevelopment,Sum,58.33,62.22,80.39,99.91,156.73,190.55,232.37,226.75,RO
-GradualDevelopment,Hydro,58.22,58.22,58.22,79.31,85.99,85.99,85.99,85.99,SE
-GradualDevelopment,PV,0.0,0.0,0.0,0.0,8.51,24.25,31.48,32.11,SE
-GradualDevelopment,Thermal,55.94,89.5,70.56,81.46,51.67,50.79,50.04,49.41,SE
-GradualDevelopment,Wind Offshore,0.76,0.76,0.7,0.7,0.59,0.51,0.51,0.51,SE
-GradualDevelopment,Wind Onshore,11.6,11.6,55.11,69.92,97.28,95.92,95.92,95.92,SE
-GradualDevelopment,Sum,126.52,160.08,184.6,231.39,244.04,257.45,263.94,263.94,SE
-GradualDevelopment,Hydro,0.52,5.3,6.799,8.8132,8.8111,8.5778,8.5061,8.3926,SI
-GradualDevelopment,PV,0.11,0.11,1.5754,1.5754,3.0287,3.2822,3.3702,3.4978,SI
-GradualDevelopment,Thermal,8.28,8.71,9.6623,16.1391,31.4587,31.4393,31.4229,30.2772,SI
-GradualDevelopment,Wind Offshore,0.01,0.01,0.0088,0.0075,0.0064,0.0056,0.0056,0.0056,SI
-GradualDevelopment,Wind Onshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,SI
-GradualDevelopment,Sum,8.91,14.13,18.0456,26.5352,43.3048,43.3048,43.3048,42.1732,SI
-GradualDevelopment,Hydro,2.796,6.808,6.9556,9.902,9.9011,9.8524,9.8524,9.7715,SK
-GradualDevelopment,PV,0.507,0.507,4.9173,9.3272,9.4744,12.8972,16.3166,16.4873,SK
-GradualDevelopment,Thermal,17.698,19.326,25.2861,39.3306,66.8136,66.6892,66.5835,59.5619,SK
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,SK
-GradualDevelopment,Wind Onshore,0.003,0.003,0.0026,0.0022,0.0022,0.0022,0.0022,0.0022,SK
-GradualDevelopment,Sum,21.005,26.644,37.1615,58.562,86.1913,89.441,92.7547,85.8229,SK
-GradualDevelopment,Hydro,49.37,72.59,76.38,134.76,134.76,134.76,134.76,135.38,TR
-GradualDevelopment,PV,0.24,12.26,76.96,127.74,308.52,425.51,495.22,514.1,TR
-GradualDevelopment,Thermal,145.49,126.59,131.02,40.02,5.43,5.34,5.26,14.6,TR
-GradualDevelopment,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,45.32,45.32,TR
-GradualDevelopment,Wind Onshore,10.19,10.19,55.91,186.76,530.42,686.41,687.32,667.88,TR
-GradualDevelopment,Sum,205.29,221.63,340.27,489.28,979.12,1252.02,1367.88,1377.29,TR
-GradualDevelopment,Hydro,2.19,2.19,4.3,6.29,6.13,5.91,5.65,5.44,UK
-GradualDevelopment,PV,0.0,0.0,0.0,37.38,81.11,110.72,133.98,135.55,UK
-GradualDevelopment,Thermal,292.23,262.09,236.7,221.11,272.79,243.17,233.31,232.42,UK
-GradualDevelopment,Wind Offshore,19.08,19.08,19.06,18.21,15.47,203.7,410.09,410.09,UK
-GradualDevelopment,Wind Onshore,11.27,93.24,225.45,308.64,410.55,477.13,476.89,476.89,UK
-GradualDevelopment,Sum,324.78,376.6,485.51,591.62,786.04,1040.63,1259.93,1260.4,UK
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,AT
+SocietalCommitment_globalLimit,Hydro,22.68,46.83,46.83,46.83,46.83,46.5,46.83,46.83,AT
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.31,0.31,0.31,33.07,33.07,33.07,AT
+SocietalCommitment_globalLimit,PV Utility,0.97,0.97,8.62,12.16,14.33,16.04,16.04,16.33,AT
+SocietalCommitment_globalLimit,Thermal,15.1,11.47,5.63,5.04,6.87,16.36,15.27,14.2,AT
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,AT
+SocietalCommitment_globalLimit,Wind Onshore,4.61,4.61,26.93,47.96,48.51,56.76,56.76,56.76,AT
+SocietalCommitment_globalLimit,Sum,43.36,63.88,88.32,112.3,116.84,168.73,167.97,167.19,AT
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,BE
+SocietalCommitment_globalLimit,Hydro,4.07,4.07,4.07,4.04,4.01,4.01,4.0,4.01,BE
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,7.08,13.69,20.79,20.79,20.79,BE
+SocietalCommitment_globalLimit,PV Utility,2.58,2.58,2.58,9.28,15.59,18.46,18.46,18.46,BE
+SocietalCommitment_globalLimit,Thermal,53.08,61.67,36.77,27.26,9.62,18.44,19.45,21.88,BE
+SocietalCommitment_globalLimit,Wind Offshore,2.6,2.6,2.6,11.9,28.54,38.6,39.03,39.37,BE
+SocietalCommitment_globalLimit,Wind Onshore,2.52,11.25,24.79,31.42,31.42,31.42,31.42,31.42,BE
+SocietalCommitment_globalLimit,Sum,64.84,82.16,70.79,90.98,102.88,131.72,133.15,135.93,BE
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,BG
+SocietalCommitment_globalLimit,Hydro,2.7,9.27,9.25,13.61,13.59,13.3,13.56,13.46,BG
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,6.21,6.21,6.21,47.99,47.99,47.99,BG
+SocietalCommitment_globalLimit,PV Utility,1.35,1.59,6.38,6.45,6.38,10.89,10.64,10.75,BG
+SocietalCommitment_globalLimit,Thermal,31.37,33.58,26.41,19.24,18.06,26.15,18.33,15.58,BG
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,9.28,19.76,19.76,19.76,BG
+SocietalCommitment_globalLimit,Wind Onshore,1.2,1.2,1.2,1.17,1.0,0.85,0.85,0.85,BG
+SocietalCommitment_globalLimit,Sum,36.61,45.64,49.45,46.68,54.53,118.93,111.13,108.39,BG
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,CH
+SocietalCommitment_globalLimit,Hydro,41.651,42.359,42.359,42.359,41.61,42.18,42.36,42.36,CH
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,21.146,21.146,21.15,21.15,21.15,21.15,CH
+SocietalCommitment_globalLimit,PV Utility,1.147,1.147,6.4,7.053,11.24,15.21,15.21,15.36,CH
+SocietalCommitment_globalLimit,Thermal,21.252,25.768,20.332,12.117,2.99,8.38,8.57,7.29,CH
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,CH
+SocietalCommitment_globalLimit,Wind Onshore,0.089,0.089,0.088,0.081,3.42,3.41,3.41,3.41,CH
+SocietalCommitment_globalLimit,Sum,64.138,69.363,90.324,82.755,80.4,90.33,90.7,89.56,CH
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,CZ
+SocietalCommitment_globalLimit,Hydro,5.43,6.07,6.06,6.06,6.03,6.0,5.99,5.98,CZ
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.79,21.08,21.4,21.66,CZ
+SocietalCommitment_globalLimit,PV Utility,2.16,2.16,10.87,17.46,20.11,19.91,19.91,19.91,CZ
+SocietalCommitment_globalLimit,Thermal,62.24,66.14,51.44,42.34,37.62,41.48,40.54,34.73,CZ
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,CZ
+SocietalCommitment_globalLimit,Wind Onshore,0.68,0.68,0.68,22.6,31.19,44.4,44.4,44.4,CZ
+SocietalCommitment_globalLimit,Sum,70.51,75.04,69.05,88.46,95.75,132.87,132.24,126.69,CZ
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,DE
+SocietalCommitment_globalLimit,Hydro,17.22,59.33,59.33,57.41,59.33,59.33,59.33,59.33,DE
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,35.21,138.25,207.78,211.78,211.78,DE
+SocietalCommitment_globalLimit,PV Utility,34.4,34.4,67.79,112.35,119.56,115.32,115.32,121.23,DE
+SocietalCommitment_globalLimit,Thermal,413.14,359.55,162.78,74.57,59.45,123.05,118.56,106.57,DE
+SocietalCommitment_globalLimit,Wind Offshore,15.86,15.86,15.86,140.57,361.52,444.74,444.74,444.74,DE
+SocietalCommitment_globalLimit,Wind Onshore,82.69,213.67,332.25,363.78,368.38,426.79,426.35,423.47,DE
+SocietalCommitment_globalLimit,Sum,563.3,682.82,638.01,783.89,1106.49,1377.01,1376.09,1367.13,DE
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,DK
+SocietalCommitment_globalLimit,Hydro,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,DK
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,7.4,10.85,13.68,16.92,21.38,DK
+SocietalCommitment_globalLimit,PV Utility,0.63,0.63,0.54,4.43,8.31,8.24,8.24,8.17,DK
+SocietalCommitment_globalLimit,Thermal,11.21,10.12,7.26,4.12,2.43,2.85,2.43,2.06,DK
+SocietalCommitment_globalLimit,Wind Offshore,4.69,4.69,3.99,22.14,82.09,95.86,95.86,95.86,DK
+SocietalCommitment_globalLimit,Wind Onshore,5.52,16.5,32.96,32.26,30.95,30.48,27.55,23.42,DK
+SocietalCommitment_globalLimit,Sum,22.04,31.94,44.74,70.35,134.63,151.11,150.99,150.89,DK
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,EE
+SocietalCommitment_globalLimit,Hydro,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,EE
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,2.19,3.08,4.4,4.91,5.65,EE
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,0.0,0.55,1.11,1.11,1.11,1.11,EE
+SocietalCommitment_globalLimit,Thermal,7.02,6.07,0.6,0.51,0.44,0.9,0.76,0.65,EE
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,2.38,8.22,8.22,8.22,EE
+SocietalCommitment_globalLimit,Wind Onshore,0.68,1.13,5.04,5.67,5.58,5.51,5.06,4.36,EE
+SocietalCommitment_globalLimit,Sum,7.7,7.2,5.65,8.93,12.58,20.13,20.05,19.98,EE
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,ES
+SocietalCommitment_globalLimit,Hydro,56.51,72.22,71.84,92.24,89.78,91.56,91.27,90.33,ES
+SocietalCommitment_globalLimit,PV Rooftop,0.0,34.28,34.28,43.68,310.81,350.51,345.38,345.38,ES
+SocietalCommitment_globalLimit,PV Utility,5.91,82.88,82.88,159.83,158.95,223.99,234.92,284.77,ES
+SocietalCommitment_globalLimit,Thermal,186.18,169.44,98.22,71.0,47.23,51.45,43.73,41.89,ES
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,ES
+SocietalCommitment_globalLimit,Wind Onshore,47.25,125.26,167.64,356.78,420.38,423.91,418.92,370.45,ES
+SocietalCommitment_globalLimit,Sum,295.86,484.08,454.86,723.54,1027.14,1141.42,1134.22,1132.83,ES
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,FI
+SocietalCommitment_globalLimit,Hydro,13.643,19.562,19.56,24.275,24.13,24.18,24.15,22.52,FI
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.63,5.39,6.44,11.58,FI
+SocietalCommitment_globalLimit,PV Utility,0.059,0.059,0.05,0.042,4.9,9.77,9.77,9.76,FI
+SocietalCommitment_globalLimit,Thermal,41.878,40.201,31.39,17.765,5.54,4.72,4.09,3.49,FI
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,15.13,15.13,15.13,FI
+SocietalCommitment_globalLimit,Wind Onshore,1.924,2.235,34.5,59.417,75.95,76.96,76.64,73.73,FI
+SocietalCommitment_globalLimit,Sum,57.503,62.057,85.51,101.499,111.16,136.14,136.22,136.22,FI
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,FR
+SocietalCommitment_globalLimit,Hydro,75.72,77.76,77.76,77.76,77.76,77.76,77.76,77.76,FR
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,18.01,18.01,18.01,133.68,134.44,185.44,FR
+SocietalCommitment_globalLimit,PV Utility,5.74,5.74,64.32,64.32,95.1,121.43,121.41,121.41,FR
+SocietalCommitment_globalLimit,Thermal,498.07,543.15,513.42,431.58,271.9,204.05,159.19,105.54,FR
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,28.63,164.91,372.76,372.76,372.76,FR
+SocietalCommitment_globalLimit,Wind Onshore,15.83,15.83,183.75,267.91,298.26,346.07,346.02,295.61,FR
+SocietalCommitment_globalLimit,Sum,595.35,642.48,857.26,888.2,925.95,1255.75,1211.58,1158.52,FR
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,GR
+SocietalCommitment_globalLimit,Hydro,9.74,9.74,9.74,9.72,9.72,9.74,9.74,9.74,GR
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,4.48,80.84,80.84,80.84,GR
+SocietalCommitment_globalLimit,PV Utility,3.7,20.12,20.12,23.54,48.18,53.39,53.23,68.79,GR
+SocietalCommitment_globalLimit,Thermal,34.5,29.37,26.55,23.53,19.48,21.75,20.54,20.41,GR
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,12.04,12.53,12.53,GR
+SocietalCommitment_globalLimit,Wind Onshore,3.87,7.98,41.55,51.7,103.11,105.69,105.38,89.83,GR
+SocietalCommitment_globalLimit,Sum,51.81,67.21,97.96,108.48,184.97,283.45,282.26,282.15,GR
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,HR
+SocietalCommitment_globalLimit,Hydro,8.72,11.43,11.42,14.99,14.81,14.79,14.81,14.81,HR
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.39,0.39,0.39,0.39,0.39,0.41,HR
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,3.13,3.13,3.13,3.13,3.13,3.13,HR
+SocietalCommitment_globalLimit,Thermal,3.17,2.73,1.34,0.58,0.55,0.71,0.87,0.77,HR
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,11.09,27.04,27.04,27.04,HR
+SocietalCommitment_globalLimit,Wind Onshore,0.37,0.37,0.37,0.31,0.27,0.23,0.23,0.23,HR
+SocietalCommitment_globalLimit,Sum,12.26,14.52,16.66,19.41,30.24,46.3,46.48,46.39,HR
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,HU
+SocietalCommitment_globalLimit,Hydro,0.248,0.342,0.34,0.43,0.43,0.42,0.41,0.41,HU
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,8.57,8.57,16.36,49.74,49.74,49.74,HU
+SocietalCommitment_globalLimit,PV Utility,0.032,0.032,6.04,8.7,12.04,12.04,12.21,20.87,HU
+SocietalCommitment_globalLimit,Thermal,23.449,24.359,20.71,24.09,14.18,23.64,21.76,21.12,HU
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,HU
+SocietalCommitment_globalLimit,Wind Onshore,0.545,0.545,13.56,23.18,36.88,57.23,57.23,48.7,HU
+SocietalCommitment_globalLimit,Sum,24.274,25.278,49.23,64.98,79.9,143.08,141.36,140.86,HU
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,IE
+SocietalCommitment_globalLimit,Hydro,1.44,1.44,1.4,1.33,1.27,1.27,1.22,1.17,IE
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,IE
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,0.0,0.0,0.0,0.0,0.06,0.79,IE
+SocietalCommitment_globalLimit,Thermal,20.99,17.93,9.3,9.26,7.73,10.51,9.34,7.94,IE
+SocietalCommitment_globalLimit,Wind Offshore,0.12,0.12,0.12,0.1,10.05,26.5,36.1,36.1,IE
+SocietalCommitment_globalLimit,Wind Onshore,5.6,37.45,37.57,68.0,67.36,66.81,57.23,56.59,IE
+SocietalCommitment_globalLimit,Sum,28.16,56.93,48.39,78.69,86.4,105.08,103.95,102.59,IE
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,IT
+SocietalCommitment_globalLimit,Hydro,43.66,68.04,68.04,67.17,66.16,67.13,68.04,68.04,IT
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,39.3,39.3,44.29,201.25,201.25,201.25,IT
+SocietalCommitment_globalLimit,PV Utility,18.56,18.56,60.87,73.15,98.03,96.01,96.01,96.79,IT
+SocietalCommitment_globalLimit,Thermal,144.33,124.42,123.58,145.93,146.79,153.63,140.22,138.7,IT
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,20.14,73.94,73.94,73.94,IT
+SocietalCommitment_globalLimit,Wind Onshore,14.24,14.24,12.28,10.44,8.87,7.54,7.54,7.54,IT
+SocietalCommitment_globalLimit,Sum,220.79,225.26,304.07,335.99,384.27,599.51,587.01,586.26,IT
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LT
+SocietalCommitment_globalLimit,Hydro,2.875,2.875,2.87,2.87,2.87,2.87,2.87,2.87,LT
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LT
+SocietalCommitment_globalLimit,PV Utility,0.062,0.062,1.61,3.09,5.16,6.83,6.86,7.73,LT
+SocietalCommitment_globalLimit,Thermal,2.209,1.938,1.39,0.29,0.47,1.24,1.05,0.89,LT
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,8.52,16.27,16.27,16.27,LT
+SocietalCommitment_globalLimit,Wind Onshore,0.81,0.81,5.2,6.38,6.26,6.16,6.16,5.32,LT
+SocietalCommitment_globalLimit,Sum,5.954,5.684,11.07,12.64,23.3,33.37,33.22,33.09,LT
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LU
+SocietalCommitment_globalLimit,Hydro,3.498,3.581,3.58,3.58,3.58,3.58,3.58,3.58,LU
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,1.33,1.33,1.33,1.33,1.33,1.33,LU
+SocietalCommitment_globalLimit,PV Utility,0.106,0.106,0.6,1.48,2.23,2.58,2.59,2.59,LU
+SocietalCommitment_globalLimit,Thermal,0.822,0.722,1.14,3.39,0.15,0.41,0.35,0.31,LU
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LU
+SocietalCommitment_globalLimit,Wind Onshore,0.099,0.099,0.85,1.92,2.52,2.74,2.74,2.74,LU
+SocietalCommitment_globalLimit,Sum,4.526,4.508,7.5,11.7,9.81,10.65,10.6,10.55,LU
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LV
+SocietalCommitment_globalLimit,Hydro,3.05,6.04,8.71,9.04,9.04,8.94,8.94,8.94,LV
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,LV
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,0.0,1.08,3.2,4.04,4.09,4.13,LV
+SocietalCommitment_globalLimit,Thermal,2.82,2.49,0.52,0.44,0.38,0.32,0.27,0.23,LV
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,8.51,14.89,14.89,14.89,LV
+SocietalCommitment_globalLimit,Wind Onshore,0.2,0.2,0.18,0.16,0.14,0.14,0.14,0.14,LV
+SocietalCommitment_globalLimit,Sum,6.07,8.73,9.42,10.72,21.26,28.33,28.33,28.33,LV
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,NL
+SocietalCommitment_globalLimit,Hydro,0.097,0.17,0.24,0.24,0.24,0.24,0.24,0.24,NL
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,13.49,14.57,30.53,30.63,30.63,30.63,NL
+SocietalCommitment_globalLimit,PV Utility,1.1,1.1,9.43,17.61,17.6,24.63,25.04,28.54,NL
+SocietalCommitment_globalLimit,Thermal,81.755,70.85,48.78,70.49,9.56,25.93,25.03,27.22,NL
+SocietalCommitment_globalLimit,Wind Offshore,1.34,1.34,1.25,1.25,93.98,190.48,190.48,190.48,NL
+SocietalCommitment_globalLimit,Wind Onshore,4.466,4.47,14.52,24.41,23.89,23.46,23.46,20.31,NL
+SocietalCommitment_globalLimit,Sum,88.759,77.93,87.7,128.57,175.81,295.36,294.87,297.41,NL
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,NO
+SocietalCommitment_globalLimit,Hydro,101.08,101.08,101.08,101.08,101.08,101.08,101.08,101.08,NO
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,4.75,4.75,5.38,6.7,NO
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,0.0,0.0,2.3,3.36,4.61,4.61,NO
+SocietalCommitment_globalLimit,Thermal,2.58,2.25,0.35,0.3,0.25,0.21,0.18,0.15,NO
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,33.12,33.29,33.29,33.29,NO
+SocietalCommitment_globalLimit,Wind Onshore,2.3,19.03,35.72,42.29,41.97,40.77,38.93,37.64,NO
+SocietalCommitment_globalLimit,Sum,105.96,122.36,137.15,143.66,183.47,183.47,183.47,183.47,NO
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,an
+SocietalCommitment_globalLimit,Hydro,16.052,26.44,26.44,29.77,29.77,29.77,29.77,29.77,an
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,an
+SocietalCommitment_globalLimit,PV Utility,0.021,0.021,10.35,14.81,25.46,50.5,50.5,61.07,an
+SocietalCommitment_globalLimit,Thermal,38.478,32.707,23.88,13.26,9.69,16.07,15.3,14.67,an
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,an
+SocietalCommitment_globalLimit,Wind Onshore,5.934,5.934,32.01,40.15,58.19,70.46,70.46,59.89,an
+SocietalCommitment_globalLimit,Sum,60.486,65.102,92.69,97.99,123.11,166.8,166.03,165.4,an
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,PL
+SocietalCommitment_globalLimit,Hydro,8.921,8.921,8.84,8.79,8.77,8.69,8.49,8.49,PL
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,39.18,64.53,85.29,PL
+SocietalCommitment_globalLimit,PV Utility,0.022,0.022,25.3,51.07,55.96,70.37,70.37,70.37,PL
+SocietalCommitment_globalLimit,Thermal,154.445,132.809,114.05,75.22,64.5,69.61,64.92,77.88,PL
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,7.45,49.08,83.25,83.25,83.25,83.25,PL
+SocietalCommitment_globalLimit,Wind Onshore,8.028,39.783,61.77,80.93,84.08,162.4,138.04,117.96,PL
+SocietalCommitment_globalLimit,Sum,171.417,181.536,217.42,265.09,296.56,433.5,429.61,443.25,PL
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,PT
+SocietalCommitment_globalLimit,Hydro,24.1,36.72,36.64,48.82,47.99,48.84,48.55,48.48,PT
+SocietalCommitment_globalLimit,PV Rooftop,0.0,24.52,24.52,24.52,29.26,58.58,57.33,57.55,PT
+SocietalCommitment_globalLimit,PV Utility,11.74,19.69,19.69,19.69,25.87,27.67,29.4,29.4,PT
+SocietalCommitment_globalLimit,Thermal,23.95,20.7,7.8,2.8,3.05,4.84,4.11,3.83,PT
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,PT
+SocietalCommitment_globalLimit,Wind Onshore,10.66,40.5,66.35,68.56,80.05,79.24,79.23,79.23,PT
+SocietalCommitment_globalLimit,Sum,70.46,142.12,154.99,164.38,186.22,219.17,218.62,218.49,PT
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,RO
+SocietalCommitment_globalLimit,Hydro,16.02,28.03,35.93,40.0,40.0,39.96,39.99,39.99,RO
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,52.64,52.64,52.64,RO
+SocietalCommitment_globalLimit,PV Utility,2.08,2.08,18.11,18.11,20.79,55.43,55.43,57.4,RO
+SocietalCommitment_globalLimit,Thermal,33.29,30.69,19.22,16.14,11.68,48.21,47.15,37.54,RO
+SocietalCommitment_globalLimit,Wind Offshore,1.61,1.61,1.37,1.16,10.6,28.45,28.45,28.19,RO
+SocietalCommitment_globalLimit,Wind Onshore,5.34,5.34,8.17,16.56,15.76,15.08,15.08,13.39,RO
+SocietalCommitment_globalLimit,Sum,58.33,67.74,82.8,91.97,98.83,239.78,238.74,229.16,RO
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,SE
+SocietalCommitment_globalLimit,Hydro,58.22,64.91,64.91,85.99,85.99,85.99,85.99,85.99,SE
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,21.78,21.78,21.78,27.88,SE
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,0.0,0.0,8.51,8.51,9.25,17.01,SE
+SocietalCommitment_globalLimit,Thermal,68.34,89.5,70.56,53.88,5.84,5.64,5.05,4.3,SE
+SocietalCommitment_globalLimit,Wind Offshore,0.76,0.76,0.7,0.7,0.59,23.18,23.18,23.18,SE
+SocietalCommitment_globalLimit,Wind Onshore,11.6,11.6,55.11,98.88,97.28,95.92,95.92,82.69,SE
+SocietalCommitment_globalLimit,Sum,138.92,166.77,191.29,239.45,219.99,241.01,241.18,241.05,SE
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,SI
+SocietalCommitment_globalLimit,Hydro,5.3,6.8,6.799,8.8132,8.81,8.58,8.51,8.39,SI
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.5418,0.5418,0.54,2.56,2.65,2.78,SI
+SocietalCommitment_globalLimit,PV Utility,0.11,0.11,1.5754,2.4695,2.45,3.02,3.02,3.02,SI
+SocietalCommitment_globalLimit,Thermal,8.28,8.71,7.3172,6.0007,0.26,0.38,0.36,0.32,SI
+SocietalCommitment_globalLimit,Wind Offshore,0.01,0.01,0.0088,0.0075,0.28,0.55,0.55,0.55,SI
+SocietalCommitment_globalLimit,Wind Onshore,0.0,0.0,0.0,0.0,1.27,1.29,1.29,1.29,SI
+SocietalCommitment_globalLimit,Sum,13.7,15.63,16.2423,17.8328,13.61,16.37,16.37,16.35,SI
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,SK
+SocietalCommitment_globalLimit,Hydro,3.598,9.59,9.5876,9.902,9.9011,9.8524,9.8524,9.7715,SK
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,1.2116,3.1625,8.5669,18.9785,19.0843,19.0843,SK
+SocietalCommitment_globalLimit,PV Utility,0.507,0.507,4.9173,9.3272,9.2511,9.1864,9.1864,9.3571,SK
+SocietalCommitment_globalLimit,Thermal,17.698,19.326,16.7013,20.7481,16.3473,28.101,28.0131,20.1828,SK
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,SK
+SocietalCommitment_globalLimit,Wind Onshore,0.003,0.003,0.0026,0.0022,0.0022,0.0022,0.0022,0.0022,SK
+SocietalCommitment_globalLimit,Sum,21.807,29.427,32.4205,43.1419,44.0686,66.1205,66.1384,58.3979,SK
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,TR
+SocietalCommitment_globalLimit,Hydro,55.21,72.59,72.59,131.59,134.71,134.71,134.71,135.38,TR
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,0.0,0.0,0.0,62.12,62.29,62.29,TR
+SocietalCommitment_globalLimit,PV Utility,0.24,70.61,70.61,90.95,135.37,266.59,266.5,300.26,TR
+SocietalCommitment_globalLimit,Thermal,147.9,126.59,38.66,11.47,6.61,41.61,38.42,34.2,TR
+SocietalCommitment_globalLimit,Wind Offshore,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,TR
+SocietalCommitment_globalLimit,Wind Onshore,10.19,135.95,301.65,444.93,480.63,480.63,480.63,446.26,TR
+SocietalCommitment_globalLimit,Sum,213.55,405.74,483.5,678.94,757.31,985.66,982.55,978.39,TR
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,UK
+SocietalCommitment_globalLimit,Hydro,2.19,4.3,6.41,6.29,6.13,5.91,5.65,5.44,UK
+SocietalCommitment_globalLimit,PV Rooftop,0.0,0.0,7.45,32.19,92.35,138.16,140.25,167.39,UK
+SocietalCommitment_globalLimit,PV Utility,0.0,0.0,37.37,74.74,74.74,74.74,74.74,74.74,UK
+SocietalCommitment_globalLimit,Thermal,295.97,265.26,199.31,128.53,62.49,65.64,55.16,54.68,UK
+SocietalCommitment_globalLimit,Wind Offshore,19.08,19.08,19.06,61.54,184.02,356.28,356.28,356.28,UK
+SocietalCommitment_globalLimit,Wind Onshore,11.27,143.81,276.02,375.22,477.13,477.13,476.89,451.33,UK
+SocietalCommitment_globalLimit,Sum,328.51,432.45,545.62,678.51,896.86,1117.86,1108.98,1109.87,UK

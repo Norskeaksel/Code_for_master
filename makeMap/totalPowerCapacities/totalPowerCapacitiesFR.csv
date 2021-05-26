@@ -1,7 +1,9 @@
 Scenario,Technology,2015,2020,2025,2030,2035,2040,2045,2050
-GradualDevelopment,Hydro, 23.04, 23.04, 23.75, 23.75, 23.75, 23.75, 23.75, 23.75
-GradualDevelopment,PV,  5.70,  5.70, 39.48, 42.03, 90.81,148.47,220.28,220.28
-GradualDevelopment,Thermal, 82.29, 79.19, 78.24, 96.76,116.03, 92.50, 86.16, 78.44
-GradualDevelopment,Wind Offshore,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.78, 12.29
-GradualDevelopment,Wind Onshore,  9.74,  9.74, 59.13, 57.97, 56.69,138.31,162.50,141.33
-GradualDevelopment,Sum,120.77,117.67,200.60,220.51,287.28,403.03,493.47,476.10
+SocietalCommitment_globalLimit,HLI_Biomass_CHP_CCS,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00
+SocietalCommitment_globalLimit,Hydro, 23.04, 23.75, 23.75, 23.75, 23.75, 23.75, 23.75, 23.75
+SocietalCommitment_globalLimit,PV Rooftop,  0.00,  0.00, 15.21, 15.21, 15.21,112.92,113.56,156.64
+SocietalCommitment_globalLimit,PV Utility,  5.70,  5.70, 55.18, 55.18, 81.08,103.21,103.19,103.19
+SocietalCommitment_globalLimit,Thermal, 82.29, 79.19, 78.24, 66.31, 40.23, 16.70, 10.36,  2.64
+SocietalCommitment_globalLimit,Wind Offshore,  0.00,  0.00,  0.00,  6.54, 38.03, 89.43, 89.43, 89.43
+SocietalCommitment_globalLimit,Wind Onshore,  9.74,  9.74, 92.36,133.54,148.22,171.54,171.51,146.70
+SocietalCommitment_globalLimit,Sum,120.77,118.37,264.74,300.53,346.53,517.55,511.79,522.35

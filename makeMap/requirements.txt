@@ -1,0 +1,7 @@
+keplergl==0.2.2
+numpy==1.19.2
+requests==2.25.1
+Fiona==1.8.18
+matplotlib==3.3.4
+geopandas==0.9.0
+pandas==1.2.3
