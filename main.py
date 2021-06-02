@@ -1,6 +1,7 @@
 # %%
 import importlib
 import pandas as pd
+import numbers
 import os
 import numpy as np
 import glob
@@ -10,91 +11,125 @@ importlib.reload(plotingFunctions)
 from plotingFunctions import *
 
 # from IPython.core.interactiveshell import InteractiveShell
-# InteractiveShell.ast_node_interactivity = "all"
+# InteractiveShell.ast_node_i   nteractivity = "all"
 
-Alltech = "Alltech\\"#Alltech\\" #"HydroWindThermalPV\\" "Alltech\\"
-# Read our new capacities
-#SCC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"SC\\totalPowerCapacitiesNO.csv")
-#TFC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TF\\totalPowerCapacitiesNO.csv")
-#DTC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"DT\\totalPowerCapacitiesNO.csv")
+def pr(df):
+    print(df.to_string())
+
+
+def insertRow(df, row):
+    df.loc[-1] = row  # adding a row
+    df.index = df.index + 1  # shifting index
+    df = df.sort_index()  # sorting by index
+    return df
+
+def powerBalance(scenario,Alltech,folder,filename="PowerBalanceNO"):
+
+    PB = pd.read_csv("Rdomain\\Tables\\" + Alltech + folder+scenario+"\\"+filename + ".csv").rename(
+        columns={"Type": "Technology"})  # .apply(lambda x: x.abs() if np.issubdtype(x.dtype, np.number) else x)
+    # for i in range(1, 6)]
+    negativeExports = [-abs(i) if type(i) != str else i for i in list(PB.iloc[0, :])]
+    PB.iloc[0] = negativeExports
+    balance = [PB.iloc[1, i] + negativeExports[i] if i > 1 else negativeExports[i] for i in
+               range(len(negativeExports))]
+    balance[0] = 'Power Balance'
+    balance_df = pd.DataFrame(balance).T
+    balance_df.columns = PB.columns
+    pr(balance_df)
+    #PB = PB.append(pd.DataFrame(balance_df), ignore_index=True)
+    Sum=[PB.iloc[0, i] + PB.iloc[3, i] if i > 1 else PB.iloc[0,i] for i in
+               range(len(negativeExports))]
+
+
+
+    Sum[0]="Sum"
+    Sum2=[PB.iloc[1, i] + PB.iloc[2, i] if i > 1 else PB.iloc[0,i] for i in
+               range(len(negativeExports))]
+    Sum2[0]="Sum2"
+
+
+    sum_df=pd.DataFrame(Sum).T
+    sum_df.columns = PB.columns
+    sum2_df=pd.DataFrame(Sum2).T
+    sum2_df.columns=PB.columns
+
+
+    PB = PB.append(pd.DataFrame(sum_df), ignore_index=True)
+    PB = PB.append(pd.DataFrame(sum2_df), ignore_index=True)
+    #PB = PB[~PB['Technology'].isin(["Export", "Import"])]
+    return PB
+
+Alltech = "" #"HydroWindThermalPV\\" "Alltech\\"
+#Read our results
+SCC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"SC\\totalPowerCapacitiesNO.csv")
+TFC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TF\\totalPowerCapacitiesNO.csv")
+DTC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"DT\\totalPowerCapacitiesNO.csv")
 GDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesNO.csv")
-#GDC48 = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacities48.csv")
-#CDCTrade= pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesTrade.csv")
-CDCelectric= pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesElectric.csv")
-CDCelectricTrade=pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesElectricTrade.csv")
-#GDCDynamicCF = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacitiesDynamicCF.csv")
 
-# Read our new productions
-#SCP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"SC\\totalPowerProductionsNO.csv")
-#TFP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TF\\totalPowerProductionsNO.csv")
-#DTP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"DT\\totalPowerProductionsNO.csv")
-#GDPTrade = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsTrade.csv")
+SCP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"SC\\totalPowerProductionsNO.csv")
+TFP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TF\\totalPowerProductionsNO.csv")
+DTP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"DT\\totalPowerProductionsNO.csv")
 GDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsNO.csv")
-GDPelectric = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsElectric.csv")
-GDPelectricTrade = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsElectricTrade.csv")
-GDPtradeAndPower = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsTradeAndPower.csv")
-#GDP48 = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductions48.csv")
-#GDPDynamicCF = pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductionsDynamicCF.csv")
-#NVEP=pd.read_csv("Rdomain\\Tables\\"+Alltech+"NVE\\totalPowerProductions.csv")
 
-# # Read TU Capacities
-#TU_SCC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"SC\\totalPowerCapacitiesNO.csv")
-#TU_TFC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"TF\\totalPowerCapacitiesNO.csv")
-#TU_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"DT\\totalPowerCapacitiesNO.csv")
-#TU_GDC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"GD\\totalPowerCapacitiesNO.csv")
-# TU_GDC_Old = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\Old\\totalPowerCapacities.csv")
-#
-# # Read TU productions
-#TU_TFP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"TF\\totalPowerProductionsNO.csv")
-#TU_SCP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"SC\\totalPowerProductionsNO.csv")
-#TU_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"DT\\totalPowerProductionsNO.csv")
-#TU_GDP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"GD\\totalPowerProductionsNO.csv")
-#TU_GDP_Old = pd.read_csv("Rdomain\\Tables\\"+Alltech+"TUresults\\GD\\Old\\totalPowerProductions.csv")
-#
-# # Read TF regions
-TF_NO1C = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacitiesNO1.csv")
-TF_NO2C = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerCapacitiesNO2.csv")
+folder=""
+TF_PB = powerBalance("TF", Alltech, folder)
+SC_PB = powerBalance("SC", Alltech, folder)
+DT_PB = powerBalance("DT", Alltech, folder)
+GD_PB = powerBalance("GD", Alltech, folder)
 
-TF_NO1P = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductionsNO1.csv")
-TF_NO2P = pd.read_csv("Rdomain\\Tables\\TF\\totalPowerProductionsNO2.csv")
+TF_HB = powerBalance("TF", Alltech, folder,"h2NO")
+SC_HB = powerBalance("SC", Alltech, folder,"h2NO")
+DT_HB = powerBalance("DT", Alltech, folder,"h2NO")
+GD_HB = powerBalance("GD", Alltech, folder,"h2NO")
 
-# Read TU CPLEX results
-# TU_CPLEX_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\DT_CPLEX\\totalPowerCapacities.csv")
-# TU_CPLEX_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\DT_CPLEX\\totalPowerProductions.csv")
 
-# Read our old capacities
-# TFC_Old = pd.read_csv("OldProjectResults\\TF\\TFtotalPowerCapacities.csv")
-# DTC_Old = pd.read_csv("OldProjectResults\\DT\\DTtotalPowerCapacities.csv")
-# GDC_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerCapacities.csv")
+# Read original results
+OSCC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\SC\\totalPowerCapacitiesNO.csv")
+OTFC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\TF\\totalPowerCapacitiesNO.csv")
+ODTC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\DT\\totalPowerCapacitiesNO.csv")
+OGDC = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\GD\\totalPowerCapacitiesNO.csv")
 
-# Read our old productions
-# TFP_Old = pd.read_csv("OldProjectResults\\TF\\TFtotalPowerProductions.csv")
-# DT_Old = pd.read_csv("OldProjectResults\\DT\\DTtotalPowerProductions.csv")
-# GDP_Old = pd.read_csv("OldProjectResults\\GD\\GDtotalPowerProductions.csv")
+OSCP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\SC\\totalPowerProductionsNO.csv")
+OTFP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\TF\\totalPowerProductionsNO.csv")
+ODTP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\DT\\totalPowerProductionsNO.csv")
+OGDP = pd.read_csv("Rdomain\\Tables\\"+Alltech+"Original\\GD\\totalPowerProductionsNO.csv")
 
-# Read Signys files
-# Si_GDC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\GD\\totalPowerCapacities.csv")
-# Si_GDP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\GD\\totalPowerProductions.csv")
-# Si_TFC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\TF\\totalPowerCapacitiesNO.csv")
-# Si_TFP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\TF\\totalPowerProductionsNO.csv")
-# Si_DTC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\DT\\totalPowerCapacitiesNO.csv")
-# Si_DTP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\DT\\totalPowerProductionsNO.csv")
-# Si_SCC = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\SC\\totalPowerCapacitiesNO.csv")
-# Si_SCP = pd.read_csv("Rdomain\\Tables\\" + Alltech + "Signy\\SC\\totalPowerProductionsNO.csv")
+folder="Original\\"
+OTF_PB = powerBalance("TF", Alltech, folder)
+OSC_PB = powerBalance("SC", Alltech, folder)
+ODT_PB = powerBalance("DT", Alltech, folder)
+OGD_PB = powerBalance("GD", Alltech, folder)
 
-# Read MiddleEarth files
-#MC=[pd.read_csv("Rdomain\\Tables\\"+Alltech+"MiddleEarth\\totalPowerCapacitiesMordor"+str(i)+".csv") for i in range(1,6)]
-#MP=[pd.read_csv("Rdomain\\Tables\\"+Alltech+"MiddleEarth\\totalPowerProductionsMordor"+str(i)+".csv") for i in range(1,6)]
+OTF_HB = powerBalance("TF", Alltech, folder,"h2NO")
+OSC_HB = powerBalance("SC", Alltech, folder,"h2NO")
+ODT_HB = powerBalance("DT", Alltech, folder,"h2NO")
+OGD_HB = powerBalance("GD", Alltech, folder,"h2NO")
 
+# Read TU Capacities
+TU_SCC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"SC\\totalPowerCapacitiesNO.csv")
+TU_TFC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"TF\\totalPowerCapacitiesNO.csv")
+TU_DTC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"DT\\totalPowerCapacitiesNO.csv")
+TU_GDC = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"GD\\totalPowerCapacitiesNO.csv")
+
+# Read TU productions
+TU_TFP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"TF\\totalPowerProductionsNO.csv")
+TU_SCP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"SC\\totalPowerProductionsNO.csv")
+TU_DTP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"DT\\totalPowerProductionsNO.csv")
+TU_GDP = pd.read_csv("Rdomain\\Tables\\TUresults\\"+Alltech+"GD\\totalPowerProductionsNO.csv")
+
+# Read NVE and Statnett
+NVEP=pd.read_csv("Rdomain\\Tables\\"+Alltech+"NVE\\totalPowerProductions.csv")
+NVEC=pd.read_csv("Rdomain\\Tables\\"+Alltech+"NVE\\totalPowerCapacities.csv")
+StatnettP=pd.read_csv("Rdomain\\Tables\\"+Alltech+"Statnett\\totalPowerProductions.csv")
+NVEuse=pd.read_csv("Rdomain\\Tables\\NVE\\powerUse.csv")
+StatnettUse=pd.read_csv("Rdomain\\Tables\\Statnett\\powerUse.csv")
 # Read GD files
-# NO_GDC = [pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerCapacities.csv")]#+str(i)+".csv") for i in range(1,6)]
-# NO_GDP = [pd.read_csv("Rdomain\\Tables\\"+Alltech+"GD\\totalPowerProductions.csv")]#+str(i)+".csv") for i in range(1,6)]
-
-# Read PowerBalance
-i=""
-#NO_DT_PB = [pd.read_csv("Rdomain\\Tables\\" + Alltech + "DT\\PowerBalanceNO" + str(i) + ".csv").rename(
-#    columns={"Type": "Technology"})#.apply(lambda x: x.abs() if np.issubdtype(x.dtype, np.number) else x)
-#            ]for i in range(1, 6)]
+#NO_GDC = [pd.read_csv("Rdomain\\Tables\\totalPowerCapacitiesNO"+str(i)+".csv") for i in range(1,6)]
+#NO_GDP = [pd.read_csv("Rdomain\\Tables\\totalPowerProductionsNO"+str(i)+".csv") for i in range(1,6)]
+#NO_GD_PB = [pd.read_csv("Rdomain\\Tables\\PowerBalanceNO"+str(i)+".csv") for i in range(1,6)]
+#plotDfs(NO_GDC, "Dissaggregated Power capacities [GW] Directed Transition NO1-NO5 ",'GW', 0, None, 2)
+#plotDfs(NO_GDP, "Dissaggregated Power productions [GW] Directed Transition NO1-NO5 ",'TWh', 0, None, 2)
+#plotDfs(NO_GD_PB, "Dissaggregated Power Balances [TWh] Directed Transition NO1-NO5 ",'TWh', 0, None, 2)
 
 # read technologyUses
 '''i=""
@@ -104,29 +139,61 @@ df=NO_SC_use[0]
 for c in [c for c in df.columns if df[c].dtype in numerics]:
     df[c] = df[c].abs()
 NO_SC_use=df'''
-# plotDfs(NO_DT_PB, "Power Balance [Twh] Directed Transition",False)
 
-#plotDfs([TF_NO1C,TF_NO2C], "TF region Capacities", False)
-#plotDfs([DTC, TU_DTC], "Power Capacities [GW] Directed Transition Gams 34 vs TU" ,False)
-#plotDfs([DTP, TU_DTP], "Power Productions [TWh] Directed Transition Gams 34 vs TU",False)
-#plotDfs([GDC, CDCelectricTrade, ], "GradualDevelopment Power Capacities [GW] Original vs Updates vs NVE", False)
-unit='TWh'
+#Read UseOfFuels
+#TFuse= pd.read_csv("Rdomain\\Tables\\TF\\UseOfFuelsNO.csv").rename(columns={"Fuel":"Technology"})
+#TFuse.update(TFuse.select_dtypes(include=[np.number]).abs())
+
+#h2NO=pd.read_csv("Rdomain\\Tables\\" + Alltech + "DT\\h2NO"+".csv").rename(columns={"Type": "Technology"})
+
+#negativeExports = [-i if type(i)!=str else i for i in list(h2NO.iloc[0,:]) ]
+#h2NO.iloc[0]=negativeExports
+
+DTuse= pd.read_csv("Rdomain\\Tables\\GD\\UseOfFuelsNO.csv").rename(columns={"Fuel":"Technology"}).apply(lambda x: x.abs() if x.dtype.kind in 'iufc' else x)
+#DTuse.update(DTuse.select_dtypes(include=[np.number]).abs())
+DTuseOrg= pd.read_csv("Rdomain\\Tables\\Original\\GD\\UseOfFuelsNO.csv").rename(columns={"Fuel":"Technology"}).apply(lambda x: x.abs() if x.dtype.kind in 'iufc' else x)
+#DTuseOrg.update(DTuse.select_dtypes(include=[np.number]).abs())
+
+
+grouped = [v for k, v in DTuse.groupby('Category') if v.iloc[0, 0] in {"Buildings", "Industry", "Transportation","Power"}]
+groupedorg = [v for k, v in DTuseOrg.groupby('Category') if v.iloc[0, 0] in {"Buildings", "Industry", "Transportation","Power"}]
+
 ascending=False
-NVE=False
-showNumbers=True
-#plotDfs([GDPDynamicCF, GDPelectric, GDPelectricTrade, NVEP], "GradualDevelopment Power Productions ["+unit+"] Dynamic vs Electric vs Trade vs NVE", unit, ascending, NVE, showNumbers)
-plotDfs([GDP, GDPelectricTrade, GDPtradeAndPower], "GradualDevelopment Power Productions ["+unit+"] Electric Trade vs Trade and power", unit, ascending, NVE, showNumbers)
+years=['2015', '2020', '2025', '2030', '2035', '2040', '2045', '2050']
+showNumbers=2 #0,1,2
 
-#plotDfs([GDP,GDPDynamicCF,NVEP],"Original vs Dynamic vs NVE's Power Productions [TWh]",False,True)
-#plotDfs([TFC, TU_TFC], "TechnoFriendly Power Capacities [GW] Gams 34 vs TU", False)
-#plotDfs([TFP, TU_TFP], "TechnoFriendly Power Productions [TWh] Gams 34 vs TU", False)
-#plotDfs([SCC, TU_SCC], "SocietalCommitment Power Capacities [GW] GG vs RR", False)
-#plotDfs([SCP, TU_SCP], "SocietalCommitment Power Productions [TWh] GG vs RR", False)
-#plotDfs([NO_SC_use], "SocietalCommitment Technology Power Use", False)
+#plotDfs([TU_DTC,TU_TFC,TU_SCC,TU_GDC], "TU Berlin  Power capacities [GW] Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development",'GW', ascending, years, showNumbers)
+#plotDfs([TU_DTP,TU_TFP,TU_SCP,TU_GDP], "TU Berlin  Power productions [TWh] Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development",'TWh', ascending, years, showNumbers)
 
-#plotDfs([Si_TFC, TU_GDC_Old], "GradualDevelopment Power Capacities [GW] Signy vs TU", False)
-#plotDfs([Si_TFP, TU_GDP_Old], "GradualDevelopment Power Productions [TWh] Signy vs TU", False)
+#plotDfs([ODTC, OTFC, OSCC, OGDC], "Original Power capacities in Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development",'GW', ascending, years, showNumbers)
+#plotDfs([ODTP, OTFP, OSCP, OGDP], "Original Power productions in Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development",'TWh', ascending, years, showNumbers)
 
-#plotDfs(MC, "Mordor [1-5] Power Capacities [GW]", False)
-#plotDfs(MP, "Mordor [1-5] Power Productions [TWh]", False)
+#plotDfs([DTC, TFC, SCC, GDC], "Modified Power capacities in Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development",'GW', ascending, years, showNumbers)
+#plotDfs([DTP, TFP, SCP, GDP], "Modified Power productions in Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development",'TWh', ascending, years, showNumbers)
 
+#plotDfs([ODTP, DTP, StatnettP, NVEP], "Directed Transition Power productions Original vs Modified vs Statnett vs NVE","[TWh]", ascending, years, showNumbers)
+NVEyears=['2015', '2020', '2025', '2030', '2035', '2040']
+#plotDfs([ODTC, DTC, NVEC], "Directed Transition Power Capacities Original vs Modified vs NVE","[GW]", ascending, NVEyears, showNumbers)
+
+#plotDfs([ODT_PB, OTF_PB, OSC_PB, OGD_PB], "Original Power balance Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development", "TWh", ascending, years, showNumbers)
+#plotDfs([DT_PB, TF_PB, SC_PB, GD_PB], "Modified Power balance Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development", "TWh", ascending, years, showNumbers)
+
+DT_Use= DT_PB.loc[DT_PB['Technology'].isin(['Use'])]
+ODT_Use= ODT_PB.loc[DT_PB['Technology'].isin(['Use'])]
+NVEuse=NVEuse.loc[NVEuse['Technology'].isin(['Use'])]
+StatnettUse=StatnettUse.loc[StatnettUse['Technology'].isin(['Use'])]
+#plotDfs([ODT_Use, DT_Use, NVEuse,StatnettUse], "Power consumption", "TWh", ascending, years, showNumbers)
+
+h2years=['2030', '2035', '2040', '2045', '2050']
+#plotDfs([ODT_HB,OTF_HB,OSC_HB,OGD_HB], "Original Hydrogen Balance Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development", "[PJ]", ascending, h2years, showNumbers)
+#plotDfs([DT_HB,TF_HB,SC_HB,GD_HB], "Modified Hydrogen Balance Directed Transition vs Techno Friendly vs Societal Commitment vs Gradual Development", "[PJ]", ascending, h2years, showNumbers)
+"""plotDfs([ODT_HB,DT_HB], "DirectedTransition Hydrogen Balance Original vs Modified", "[PJ]", ascending, h2years, showNumbers,1.5)
+
+for changed,org in zip(grouped, groupedorg):
+    org=org.append(org.sum(numeric_only=True), ignore_index=True)
+    org.at[len(org)-1, "Technology"]="Sum"
+    changed=changed.append(changed.sum(numeric_only=True), ignore_index=True)
+    changed.at[len(changed)-1, "Technology"]="Sum"
+    plotDfs([org, changed], "DirectedTransition Use of Energy Carriers in " + org.iloc[0,0]+" Original vs Modified", "TWh", ascending, years, showNumbers)
+
+"""
